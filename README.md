@@ -53,12 +53,66 @@ Paskyrą reikia susikurti pačiam — to padaryti negaliu.
 Kol nė vienas nenustatytas, forma veikia ir tikrina laukus, bet vietoj siuntimo
 parodo nustatymo priminimą.
 
-## Kaip publikuoti (GitHub Pages)
+## Publikavimas
 
-Įkėlus repozitoriją į GitHub: **Settings → Pages → Source: Deploy from a branch → `main` / `root`**.
-Svetainė atsiras adresu `https://<vartotojas>.github.io/<repo>/`.
+Įjungta: **Settings → Pages → Deploy from a branch → `main` / `root`**.
 
-Norint prijungti `vonbekker.com` — pridėti `CNAME` failą su domenu ir nukreipti DNS į GitHub Pages.
+Dabartinis adresas: **https://tomaslebedevas.photography/vonbekker/**
+
+Adresas toks todėl, kad paskyros GitHub Pages naudoja individualų domeną
+`tomaslebedevas.photography`, ir visi projektiniai puslapiai atsiduria po juo.
+
+## Perkėlimas į vonbekker.com
+
+**Prieš darant — įsidėmėti:** `vonbekker.com` šiuo metu veikia ir rodo į `79.98.24.4`
+(DNS tvarko `ns1–ns4.serveriai.lt`). Nukreipus įrašus į GitHub, ten esanti svetainė
+nustos rodytis. Verta pirma pasidaryti jos kopiją.
+
+Taip pat: nustačius individualų domeną, dabartinis adresas
+`tomaslebedevas.photography/vonbekker/` nustos veikti — GitHub ims nukreipinėti
+į `vonbekker.com`. Todėl teisinga tvarka yra tokia:
+
+**1. Suvesti DNS įrašus pas registratorių** (serveriai.lt valdymo skyde).
+
+Šakniniam domenui `vonbekker.com` — keturi `A` įrašai:
+
+```
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+```
+
+Ir, jei palaikoma, keturi `AAAA` įrašai (IPv6):
+
+```
+2606:50c0:8000::153
+2606:50c0:8001::153
+2606:50c0:8002::153
+2606:50c0:8003::153
+```
+
+Pačiam `www` — vienas `CNAME` įrašas:
+
+```
+www  →  tomlebedev-cloud.github.io
+```
+
+Seni `A` įrašai, rodantys į `79.98.24.4`, turi būti pašalinti.
+
+**2. Palaukti, kol įrašai pasklis** (nuo kelių minučių iki kelių valandų).
+Patikrinti: `dig +short vonbekker.com` — turi rodyti GitHub adresus.
+
+**3. Pridėti `CNAME` failą** į repozitorijos šaknį, jo turinys — viena eilutė:
+
+```
+vonbekker.com
+```
+
+Tai automatiškai nustato Custom domain GitHub nustatymuose.
+
+**4. Įjungti Enforce HTTPS** (Settings → Pages). Mygtukas suaktyvėja tik tada,
+kai GitHub išduoda sertifikatą naujam domenui — paprastai per 15 minučių–valandą.
 
 ## Ką dar verta padaryti
 
