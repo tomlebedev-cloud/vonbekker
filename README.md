@@ -1,7 +1,7 @@
-# Martynas Švėgžda von Bekkeris — svetainė
+# Martynas Švėgžda von Bekker — svetainė
 
 Trikalbis (LT / EN / DE) vieno puslapio pristatymas smuikininkui ir pedagogui
-Martynui Švėgždai von Bekkeriui.
+Martynui Švėgždai von Bekker.
 
 ## Failai
 

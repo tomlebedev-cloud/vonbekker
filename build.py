@@ -12,7 +12,7 @@ part = part.replace("__PORTRAIT__", "data:image/jpeg;base64," + b64)
 (root / "artifact.html").write_text(part, encoding="utf-8")
 
 # Standalone version for hosting (GitHub Pages, any static host).
-DESC = ("Martynas Švėgžda von Bekkeris — smuikininkas, Lietuvos muzikos ir teatro akademijos "
+DESC = ("Martynas Švėgžda von Bekker — smuikininkas, Lietuvos muzikos ir teatro akademijos "
         "ir Hamburgo Johanneso Brahmso konservatorijos docentas.")
 head = f"""<!doctype html>
 <html lang="lt">
@@ -22,7 +22,7 @@ head = f"""<!doctype html>
 <meta name="description" content="{DESC}">
 <meta name="theme-color" content="#131110">
 <meta property="og:type" content="profile">
-<meta property="og:title" content="Martynas Švėgžda von Bekkeris">
+<meta property="og:title" content="Martynas Švėgžda von Bekker">
 <meta property="og:description" content="{DESC}">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23131110'/><text y='23' x='16' text-anchor='middle' font-family='Georgia,serif' font-size='20' fill='%23C68A42'>M</text></svg>">
 """
