@@ -1,0 +1,602 @@
+<title>Švėgžda von Bekkeris</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* ---- tokens: one committed world, the hall during a performance ---- */
+  :root{
+    --ground:#131110;
+    --ground-2:#1A1715;
+    --surface:#1C1917;
+    --paper:#EFE9E0;
+    --muted:#9C9188;
+    --faint:#6E655D;
+    --rule:#2E2924;
+    --varnish:#C68A42;
+    --varnish-dim:#8A6230;
+
+    --f-display:"Bodoni Moda","Didot","Bodoni MT",Georgia,serif;
+    --f-body:"Archivo","Helvetica Neue",Arial,sans-serif;
+    --f-data:"IBM Plex Mono","SFMono-Regular",Menlo,monospace;
+
+    --measure:63ch;
+    --rail:6.5rem;
+    --pad:clamp(1.25rem,5vw,4rem);
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--paper);
+    font-family:var(--f-body);
+    font-size:clamp(15px,0.55vw + 13.4px,17px);
+    line-height:1.65;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  [hidden]{display:none!important}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--varnish);outline-offset:3px;border-radius:2px}
+
+  .wrap{max-width:66rem;margin:0 auto;padding-inline:var(--pad)}
+
+  /* ---- language switcher ---- */
+  .topbar{
+    position:sticky;top:0;z-index:40;
+    background:rgba(19,17,16,0.92);
+    background:color-mix(in srgb,var(--ground) 88%,transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--rule);
+  }
+  .topbar-in{
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    max-width:66rem;margin:0 auto;padding:0.7rem var(--pad);
+  }
+  .sigil{
+    font-family:var(--f-display);font-size:0.95rem;letter-spacing:0.02em;
+    color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .langs{display:flex;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:2px;flex:none}
+  .langs button{
+    appearance:none;border:0;cursor:pointer;
+    background:var(--ground);color:var(--muted);
+    font-family:var(--f-data);font-size:0.7rem;font-weight:500;
+    letter-spacing:0.09em;padding:0.42rem 0.7rem;
+    transition:color .18s ease,background .18s ease;
+  }
+  .langs button:hover{color:var(--paper)}
+  .langs button[aria-pressed="true"]{background:var(--varnish);color:#17130E}
+
+  /* ---- hero ---- */
+  .hero{padding-block:clamp(2.5rem,7vw,5.5rem) clamp(2.5rem,6vw,4.5rem)}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(1.75rem,4vw,3.25rem);align-items:end}
+  @media (min-width:820px){ .hero-grid{grid-template-columns:15.5rem minmax(0,1fr)} }
+
+  .portrait{
+    position:relative;border:1px solid var(--rule);background:var(--ground-2);
+    max-width:15.5rem;
+  }
+  .portrait img{width:100%;height:auto;filter:contrast(1.06) brightness(0.97)}
+  .portrait figcaption{
+    font-family:var(--f-data);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--faint);padding:0.5rem 0.6rem;border-top:1px solid var(--rule);
+  }
+
+  .eyebrow{
+    font-family:var(--f-data);font-size:0.68rem;font-weight:500;
+    letter-spacing:0.22em;text-transform:uppercase;color:var(--varnish);
+    margin:0 0 1rem;
+  }
+  h1{
+    font-family:var(--f-display);font-weight:400;
+    font-size:clamp(2.35rem,7.2vw,4.6rem);
+    line-height:0.98;letter-spacing:-0.012em;
+    margin:0;text-wrap:balance;
+  }
+  h1 .sur{display:block;font-style:italic;font-weight:400}
+  .lead{
+    font-family:var(--f-display);font-style:italic;
+    font-size:clamp(1.05rem,1.9vw,1.3rem);line-height:1.45;
+    color:var(--paper);margin:1.4rem 0 0;max-width:34ch;
+  }
+  .roles{
+    margin:1.5rem 0 0;padding:0;list-style:none;
+    display:flex;flex-wrap:wrap;gap:0.35rem 1.1rem;
+    font-size:0.83rem;color:var(--muted);max-width:52ch;
+  }
+  .roles li{position:relative;padding-left:0.85rem}
+  .roles li::before{
+    content:"";position:absolute;left:0;top:0.62em;
+    width:3px;height:3px;border-radius:50%;background:var(--varnish-dim);
+  }
+
+  /* ---- the four strings: G D A E, tuned in fifths ---- */
+  .strings{margin-top:clamp(2.25rem,5vw,3.25rem);display:grid;gap:0.72rem}
+  .string{display:grid;grid-template-columns:1.35rem 1fr;align-items:center;gap:0.75rem}
+  .string span{
+    font-family:var(--f-data);font-size:0.6rem;letter-spacing:0.08em;
+    color:var(--faint);
+  }
+  .string i{
+    display:block;background:linear-gradient(90deg,var(--rule),#4A4239 45%,var(--rule));
+    transform-origin:center;
+  }
+  .string:nth-child(1) i{height:2.4px}
+  .string:nth-child(2) i{height:1.9px}
+  .string:nth-child(3) i{height:1.4px}
+  .string:nth-child(4) i{height:1px}
+  @media (prefers-reduced-motion:no-preference){
+    .string i{animation:bow 7s ease-in-out infinite}
+    .string:nth-child(1) i{animation-delay:0s}
+    .string:nth-child(2) i{animation-delay:.45s}
+    .string:nth-child(3) i{animation-delay:.9s}
+    .string:nth-child(4) i{animation-delay:1.35s}
+  }
+  @keyframes bow{
+    0%,72%,100%{transform:scaleY(1);opacity:.8}
+    76%{transform:scaleY(2.6);opacity:1}
+    82%{transform:scaleY(1.5);opacity:.95}
+    88%{transform:scaleY(1.15);opacity:.85}
+  }
+
+  /* ---- sections ---- */
+  section{padding-block:clamp(2.75rem,6vw,4.5rem);border-top:1px solid var(--rule)}
+  .sec-head{
+    display:flex;align-items:baseline;gap:1rem;
+    margin:0 0 clamp(1.5rem,3vw,2.25rem);
+  }
+  .sec-head h2{
+    font-family:var(--f-display);font-weight:400;
+    font-size:clamp(1.5rem,3.1vw,2.05rem);line-height:1.1;
+    margin:0;letter-spacing:-0.005em;text-wrap:balance;
+  }
+  .sec-head .n{
+    font-family:var(--f-data);font-size:0.66rem;letter-spacing:0.14em;
+    color:var(--varnish);flex:none;padding-top:0.15em;
+  }
+
+  .prose{max-width:var(--measure)}
+  .prose p{margin:0 0 1.15em}
+  .prose p:last-child{margin-bottom:0}
+  .prose p.first{
+    font-size:1.1em;color:var(--paper);
+  }
+  .prose p{color:var(--muted)}
+  .prose strong{color:var(--paper);font-weight:500}
+
+  /* ---- year rail: the spine of a chronology ---- */
+  .rail{display:grid;gap:0}
+  .entry{
+    display:grid;grid-template-columns:var(--rail) minmax(0,1fr);
+    gap:0 clamp(1rem,2.5vw,2rem);
+    padding-block:1.1rem;
+    border-top:1px solid var(--rule);
+  }
+  .entry:first-child{border-top:0;padding-top:0}
+  .entry .yr{
+    font-family:var(--f-data);font-size:0.74rem;font-weight:500;
+    font-variant-numeric:tabular-nums;letter-spacing:0.01em;
+    color:var(--varnish);padding-top:0.28em;white-space:nowrap;
+  }
+  .entry .yr.open{color:var(--paper)}
+  .entry h3{
+    font-family:var(--f-body);font-weight:500;font-size:1rem;
+    margin:0;line-height:1.4;color:var(--paper);
+  }
+  .entry p{margin:0.3rem 0 0;color:var(--muted);font-size:0.92rem;max-width:58ch}
+  .entry .tag{
+    display:inline-block;margin-top:0.55rem;
+    font-family:var(--f-data);font-size:0.62rem;letter-spacing:0.11em;
+    text-transform:uppercase;color:var(--varnish);
+    border:1px solid var(--varnish-dim);border-radius:2px;padding:0.18rem 0.44rem;
+  }
+  @media (max-width:560px){
+    .entry{grid-template-columns:minmax(0,1fr);gap:0.4rem}
+    .entry .yr{padding-top:0}
+  }
+
+  /* ---- name lists ---- */
+  .block{margin-top:clamp(2rem,4vw,2.75rem)}
+  .block:first-child{margin-top:0}
+  .label{
+    font-family:var(--f-data);font-size:0.66rem;font-weight:500;
+    letter-spacing:0.16em;text-transform:uppercase;color:var(--faint);
+    margin:0 0 0.9rem;
+  }
+  .names{
+    margin:0;padding:0;list-style:none;
+    display:flex;flex-wrap:wrap;gap:0.3rem 0;
+    max-width:62rem;
+  }
+  .names li{font-size:0.94rem;color:var(--paper);padding-right:0.9rem;margin-right:0.9rem;position:relative}
+  .names li::after{
+    content:"";position:absolute;right:0;top:0.62em;
+    width:3px;height:3px;border-radius:50%;background:var(--varnish-dim);
+  }
+  .names li:last-child::after{display:none}
+  .names li small{color:var(--muted);font-size:0.85em}
+
+  /* ---- academy: the one raised object on the page ---- */
+  .featured{
+    background:var(--surface);border:1px solid var(--rule);
+    border-left:2px solid var(--varnish);
+    padding:clamp(1.4rem,3.4vw,2.2rem);
+    display:grid;gap:0.8rem;
+  }
+  .featured .yr{
+    font-family:var(--f-data);font-size:0.72rem;font-weight:500;
+    letter-spacing:0.08em;color:var(--varnish);
+  }
+  .featured h3{
+    font-family:var(--f-display);font-weight:400;font-size:clamp(1.35rem,2.7vw,1.8rem);
+    margin:0;line-height:1.15;letter-spacing:-0.005em;
+  }
+  .featured p{margin:0;color:var(--muted);max-width:52ch}
+
+  /* ---- footer ---- */
+  footer{border-top:1px solid var(--rule);padding-block:clamp(2.5rem,5vw,3.5rem) 3rem}
+  .site-link{
+    font-family:var(--f-display);font-size:clamp(1.5rem,4vw,2.4rem);
+    text-decoration:none;color:var(--paper);
+    border-bottom:1px solid var(--varnish-dim);
+    padding-bottom:0.1em;transition:color .2s ease,border-color .2s ease;
+    display:inline-block;
+  }
+  .site-link:hover{color:var(--varnish);border-color:var(--varnish)}
+  .colophon{
+    margin-top:2.25rem;font-family:var(--f-data);font-size:0.66rem;
+    letter-spacing:0.06em;color:var(--faint);line-height:1.8;
+  }
+</style>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <div class="sigil">Martynas Švėgžda von Bekkeris</div>
+    <div class="langs" role="group" id="langs">
+      <button type="button" data-lang="lt" lang="lt">LT</button>
+      <button type="button" data-lang="en" lang="en">EN</button>
+      <button type="button" data-lang="de" lang="de">DE</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main"></main>
+
+<script>
+(function(){
+  "use strict";
+
+  var PORTRAIT = "__PORTRAIT__";
+
+  var C = {
+    lt:{
+      htmlLang:"lt",
+      eyebrow:"Smuikininkas",
+      given:"Martynas Švėgžda",
+      sur:"von Bekkeris",
+      lead:"Nuo pirmojo rečitalio septynerių metų amžiaus — koncertų salės Europoje, JAV ir Azijoje.",
+      portraitCap:"Portretas",
+      roles:[
+        "Lietuvos muzikos ir teatro akademijos docentas",
+        "Johanneso Brahmso konservatorijos Hamburge docentas",
+        "„Alternative Academy of Arts“ įkūrėjas"
+      ],
+      sections:{
+        bio:{n:"I", t:"Biografija"},
+        formation:{n:"II", t:"Mokykla"},
+        awards:{n:"III", t:"Konkursai ir pripažinimas"},
+        stage:{n:"IV", t:"Scenoje"},
+        teaching:{n:"V", t:"Pedagogika"}
+      },
+      bio:[
+        "Martynas Švėgžda von Bekkeris gimė 1967 m. Vilniuje. Sulaukęs penkerių pirmąsias smuiko pamokas gavo iš savo močiutės <strong>E. Strazdaitės-Bekerienės</strong>, studijavusios pas L. Auer, J. Mařak, J. Feld ir J. Thibaud. Septynerių sugrojo pirmąjį rečitalį, o vienuolikos — koncertavo su Lietuvos valstybiniu simfoniniu orkestru.",
+        "Nuo 1990 m. aktyviai rengia solinius ir kamerinės muzikos koncertus Europoje, JAV ir Azijoje. 1997 ir 2009 m. jam suteiktas <strong>Lietuvos Respublikos kultūros garbės atašė</strong> titulas. Nuo 2003 m. — Lietuvos muzikos ir teatro akademijos docentas, nuo 2016 m. — Hamburgo Johanneso Brahmso konservatorijos docentas."
+      ],
+      formation:[
+        {yr:"1973 – 1986", h:"M. K. Čiurlionio menų gimnazija", p:"Vilnius, Lietuva."},
+        {yr:"1986 – 1989", h:"Lietuvos valstybinė konservatorija", p:"Prof. R. Katiliaus klasė."},
+        {yr:"1989 – 1996", h:"Hamburgo muzikos ir teatro aukštoji mokykla", p:"Prof. M. Lubotsky klasė. Studijas baigė su pagyrimu; baigiamasis egzaminas — koncertas.", tag:"Su pagyrimu"}
+      ],
+      mastersLabel:"Tobulinosi pas",
+      masters:[
+        {n:"Eberhard Feltz", y:"1983"},
+        {n:"Igor Bezrodny", y:"1986"},
+        {n:"Igor Oistrach", y:"1988"},
+        {n:"Volker Balfield", y:"1990–1992"},
+        {n:"Ralf Gothoni", y:"1990–1992"},
+        {n:"Detlev Kraus", y:"1990–1992"},
+        {n:"Boris Garlitsky", y:"1996"}
+      ],
+      awards:[
+        {yr:"1983", h:"Tarptautinis Jaroslavo Kociano smuikininkų konkursas", p:"Čekija.", tag:"IV vieta"},
+        {yr:"1984", h:"Lietuvos jaunųjų smuikininkų konkursas", p:"", tag:"II vieta"},
+        {yr:"1990", h:"Tarptautinis Brahmso smuikininkų konkursas", p:"", tag:"III vieta"},
+        {yr:"1991 – 1995", h:"Fortepijoninis trio „Coloris“", p:"Aktyvi koncertinė veikla Lietuvoje ir Vokietijoje. Pirmieji Elise Meyer fondo apdovanojimai; antrojo Hausmanno muzikos konkurso Hamburge laureatas."},
+        {yr:"1997 · 2009", h:"Lietuvos Respublikos kultūros garbės atašė", p:"Titulas suteiktas du kartus."}
+      ],
+      orchLabel:"Orkestrai",
+      orchestras:[
+        "Berlyno simfoninis orkestras","Gruzijos simfoninis orkestras","Lietuvos valstybinis simfoninis orkestras",
+        "Lietuvos kamerinis orkestras","Hamburgo simfoninis orkestras","„Gloriamus“ filharmonijos orkestras, Džakarta"
+      ],
+      partLabel:"Kartu su",
+      partners:["H.-D. Baum","K.-P. Seibel","G. Tshitshinadze","I. Uriasch","N. Lugansky","D. Kraus","S. Sondeckis","M. Lubotsky","D. McTier","G. Rivinius","Y. Mazurkevich"],
+      archLabel:"Koncertų įrašai saugomi",
+      archives:[
+        {n:"LRT", y:"Lietuva"},{n:"SWR", y:"Vokietija"},{n:"NDR", y:"Vokietija"},
+        {n:"Ostankino", y:"Rusija"},{n:"Chalom Canal", y:"Prancūzija"},{n:"ICTV", y:"Islandija"}
+      ],
+      academy:{yr:"Nuo 2015", h:"Alternative Academy of Arts", p:"Tarptautinė mobili tarpdisciplininė meno akademija. Įkūrėjas."},
+      teaching:[
+        {yr:"Nuo 2003", open:true, h:"Lietuvos muzikos ir teatro akademija", p:"Docentas."},
+        {yr:"Nuo 2016", open:true, h:"Johanneso Brahmso konservatorija, Hamburgas", p:"Docentas."},
+        {yr:"Nuo 2014", open:true, h:"Kasmetiniai meistriškumo kursai", p:"Tarptautinė Alfredo Schnittke’s akademija ir Johanneso Brahmso konservatorija Hamburge; Stasio Šimkaus konservatorija ir Vytauto Didžiojo universitetas Lietuvoje."},
+        {yr:"2005 – 2010", h:"Meistriškumo kursai užsienyje", p:"Pagal „Erasmus“ docentų mobilumo ir „Nordplus“ mainų programas: Lisabonos konservatorijos ir universitetai (2005), Kopenhaga (2005–2006), Kaljaris (2009), Oslas (2009). Pagal Fulbrighto programą: Bostono universitetas (2009), Longy muzikos mokykla ir Berklio muzikos koledžas Bostone (2010)."},
+        {yr:"2002 – 2004", h:"Tarptautinis Kišomprė konkursas, Prancūzija", p:"Žiuri narys."}
+      ],
+      footerCta:"Oficiali svetainė",
+      colophon:"Turinys parengtas pagal atlikėjo biografiją.<br>Portretas — iš atlikėjo archyvo."
+    },
+
+    en:{
+      htmlLang:"en",
+      eyebrow:"Violinist",
+      given:"Martynas Švėgžda",
+      sur:"von Bekkeris",
+      lead:"From a first recital at the age of seven to concert halls across Europe, the United States and Asia.",
+      portraitCap:"Portrait",
+      roles:[
+        "Associate Professor, Lithuanian Academy of Music and Theatre",
+        "Associate Professor, Johannes Brahms Conservatory Hamburg",
+        "Founder, Alternative Academy of Arts"
+      ],
+      sections:{
+        bio:{n:"I", t:"Biography"},
+        formation:{n:"II", t:"Training"},
+        awards:{n:"III", t:"Competitions and honours"},
+        stage:{n:"IV", t:"On stage"},
+        teaching:{n:"V", t:"Teaching"}
+      },
+      bio:[
+        "Martynas Švėgžda von Bekkeris was born in 1967 in Vilnius, Lithuania. At the age of five he received his first violin lessons from his grandmother, <strong>E. Strazdaitė-Bekerienė</strong>, who had studied with L. Auer, J. Mařak, J. Feld and J. Thibaud. He gave his first recital at seven and appeared with the Lithuanian State Symphony Orchestra at eleven.",
+        "Since 1990 he has performed solo and chamber music recitals throughout Europe, the United States and Asia. In 1997 and again in 2009 he was named <strong>Honorary Cultural Attaché of the Republic of Lithuania</strong>. He has taught at the Lithuanian Academy of Music and Theatre since 2003, and at the Johannes Brahms Conservatory in Hamburg since 2016."
+      ],
+      formation:[
+        {yr:"1973 – 1986", h:"M. K. Čiurlionis School of Art", p:"Vilnius, Lithuania."},
+        {yr:"1986 – 1989", h:"Lithuanian State Conservatoire", p:"Class of Prof. R. Katilius."},
+        {yr:"1989 – 1996", h:"Hochschule für Musik und Theater Hamburg", p:"Class of Prof. M. Lubotsky. Graduated with distinction; final examination given as a public concert.", tag:"With distinction"}
+      ],
+      mastersLabel:"Further studies with",
+      masters:[
+        {n:"Eberhard Feltz", y:"1983"},
+        {n:"Igor Bezrodny", y:"1986"},
+        {n:"Igor Oistrach", y:"1988"},
+        {n:"Volker Balfield", y:"1990–1992"},
+        {n:"Ralf Gothoni", y:"1990–1992"},
+        {n:"Detlev Kraus", y:"1990–1992"},
+        {n:"Boris Garlitsky", y:"1996"}
+      ],
+      awards:[
+        {yr:"1983", h:"Jaroslav Kocian International Violin Competition", p:"Czech Republic.", tag:"4th prize"},
+        {yr:"1984", h:"Lithuanian Young Violinists Competition", p:"", tag:"2nd prize"},
+        {yr:"1990", h:"International Brahms Violin Competition", p:"", tag:"3rd prize"},
+        {yr:"1991 – 1995", h:"Coloris Piano Trio", p:"An active concert life in Lithuania and Germany. First prizes of the Elise Meyer Foundation; laureate of the second Hausmann Music Competition in Hamburg."},
+        {yr:"1997 · 2009", h:"Honorary Cultural Attaché of the Republic of Lithuania", p:"Awarded on two occasions."}
+      ],
+      orchLabel:"Orchestras",
+      orchestras:[
+        "Berlin Symphony Orchestra","Georgian Symphony Orchestra","Lithuanian State Symphony Orchestra",
+        "Lithuanian Chamber Orchestra","Hamburg Symphony Orchestra","Gloriamus Philharmonic Orchestra, Jakarta"
+      ],
+      partLabel:"Alongside",
+      partners:["H.-D. Baum","K.-P. Seibel","G. Tshitshinadze","I. Uriasch","N. Lugansky","D. Kraus","S. Sondeckis","M. Lubotsky","D. McTier","G. Rivinius","Y. Mazurkevich"],
+      archLabel:"Concert recordings held by",
+      archives:[
+        {n:"LRT", y:"Lithuania"},{n:"SWR", y:"Germany"},{n:"NDR", y:"Germany"},
+        {n:"Ostankino", y:"Russia"},{n:"Chalom Canal", y:"France"},{n:"ICTV", y:"Iceland"}
+      ],
+      academy:{yr:"Since 2015", h:"Alternative Academy of Arts", p:"An international, mobile, interdisciplinary academy of the arts. Founder."},
+      teaching:[
+        {yr:"Since 2003", open:true, h:"Lithuanian Academy of Music and Theatre", p:"Associate Professor."},
+        {yr:"Since 2016", open:true, h:"Johannes Brahms Conservatory, Hamburg", p:"Associate Professor."},
+        {yr:"Since 2014", open:true, h:"Annual masterclasses", p:"International Alfred Schnittke Academy and Johannes Brahms Conservatory in Hamburg; Stasys Šimkus Conservatory and Vytautas Magnus University in Lithuania."},
+        {yr:"2005 – 2010", h:"Masterclasses abroad", p:"Under the Erasmus teaching mobility and Nordplus exchange programmes: conservatoires and universities in Lisbon (2005), Copenhagen (2005–2006), Cagliari (2009), Oslo (2009). Under the Fulbright programme: Boston University (2009), Longy School of Music and Berklee College of Music in Boston (2010)."},
+        {yr:"2002 – 2004", h:"Kišomprė International Competition, France", p:"Jury member."}
+      ],
+      footerCta:"Official site",
+      colophon:"Content compiled from the artist’s biography.<br>Portrait from the artist’s archive."
+    },
+
+    de:{
+      htmlLang:"de",
+      eyebrow:"Geiger",
+      given:"Martynas Švėgžda",
+      sur:"von Bekkeris",
+      lead:"Vom ersten Rezital mit sieben Jahren zu Konzertsälen in Europa, den USA und Asien.",
+      portraitCap:"Porträt",
+      roles:[
+        "Dozent an der Litauischen Musik- und Theaterakademie",
+        "Dozent am Johannes-Brahms-Konservatorium Hamburg",
+        "Gründer der Alternative Academy of Arts"
+      ],
+      sections:{
+        bio:{n:"I", t:"Biografie"},
+        formation:{n:"II", t:"Ausbildung"},
+        awards:{n:"III", t:"Wettbewerbe und Auszeichnungen"},
+        stage:{n:"IV", t:"Auf der Bühne"},
+        teaching:{n:"V", t:"Lehre"}
+      },
+      bio:[
+        "Martynas Švėgžda von Bekkeris wurde 1967 in Vilnius, Litauen, geboren. Mit fünf Jahren erhielt er seinen ersten Geigenunterricht von seiner Großmutter <strong>E. Strazdaitė-Bekerienė</strong>, die bei L. Auer, J. Mařak, J. Feld und J. Thibaud studiert hatte. Mit sieben spielte er sein erstes Rezital, mit elf konzertierte er mit dem Litauischen Staatlichen Sinfonieorchester.",
+        "Seit 1990 gibt er Solo- und Kammermusikkonzerte in Europa, den USA und Asien. 1997 und erneut 2009 wurde ihm der Titel <strong>Ehrenkulturattaché der Republik Litauen</strong> verliehen. Seit 2003 lehrt er an der Litauischen Musik- und Theaterakademie, seit 2016 am Johannes-Brahms-Konservatorium Hamburg."
+      ],
+      formation:[
+        {yr:"1973 – 1986", h:"M.-K.-Čiurlionis-Kunstgymnasium", p:"Vilnius, Litauen."},
+        {yr:"1986 – 1989", h:"Staatliches Konservatorium Litauens", p:"Klasse von Prof. R. Katilius."},
+        {yr:"1989 – 1996", h:"Hochschule für Musik und Theater Hamburg", p:"Klasse von Prof. M. Lubotsky. Abschluss mit Auszeichnung; die Abschlussprüfung wurde als Konzert abgelegt.", tag:"Mit Auszeichnung"}
+      ],
+      mastersLabel:"Weiterbildung bei",
+      masters:[
+        {n:"Eberhard Feltz", y:"1983"},
+        {n:"Igor Bezrodny", y:"1986"},
+        {n:"Igor Oistrach", y:"1988"},
+        {n:"Volker Balfield", y:"1990–1992"},
+        {n:"Ralf Gothoni", y:"1990–1992"},
+        {n:"Detlev Kraus", y:"1990–1992"},
+        {n:"Boris Garlitsky", y:"1996"}
+      ],
+      awards:[
+        {yr:"1983", h:"Internationaler Jaroslav-Kocian-Violinwettbewerb", p:"Tschechien.", tag:"4. Preis"},
+        {yr:"1984", h:"Litauischer Wettbewerb junger Geiger", p:"", tag:"2. Preis"},
+        {yr:"1990", h:"Internationaler Brahms-Violinwettbewerb", p:"", tag:"3. Preis"},
+        {yr:"1991 – 1995", h:"Klaviertrio „Coloris“", p:"Rege Konzerttätigkeit in Litauen und Deutschland. Erste Preise der Elise-Meyer-Stiftung; Preisträger des zweiten Hausmann-Musikwettbewerbs in Hamburg."},
+        {yr:"1997 · 2009", h:"Ehrenkulturattaché der Republik Litauen", p:"Zweimal verliehen."}
+      ],
+      orchLabel:"Orchester",
+      orchestras:[
+        "Berliner Sinfonie-Orchester","Georgisches Sinfonieorchester","Litauisches Staatliches Sinfonieorchester",
+        "Litauisches Kammerorchester","Hamburger Symphoniker","Gloriamus Philharmonisches Orchester, Jakarta"
+      ],
+      partLabel:"Gemeinsam mit",
+      partners:["H.-D. Baum","K.-P. Seibel","G. Tshitshinadze","I. Uriasch","N. Lugansky","D. Kraus","S. Sondeckis","M. Lubotsky","D. McTier","G. Rivinius","Y. Mazurkevich"],
+      archLabel:"Konzertmitschnitte in den Archiven von",
+      archives:[
+        {n:"LRT", y:"Litauen"},{n:"SWR", y:"Deutschland"},{n:"NDR", y:"Deutschland"},
+        {n:"Ostankino", y:"Russland"},{n:"Chalom Canal", y:"Frankreich"},{n:"ICTV", y:"Island"}
+      ],
+      academy:{yr:"Seit 2015", h:"Alternative Academy of Arts", p:"Eine internationale, mobile, interdisziplinäre Kunstakademie. Gründer."},
+      teaching:[
+        {yr:"Seit 2003", open:true, h:"Litauische Musik- und Theaterakademie", p:"Dozent."},
+        {yr:"Seit 2016", open:true, h:"Johannes-Brahms-Konservatorium, Hamburg", p:"Dozent."},
+        {yr:"Seit 2014", open:true, h:"Jährliche Meisterkurse", p:"Internationale Alfred-Schnittke-Akademie und Johannes-Brahms-Konservatorium in Hamburg; Stasys-Šimkus-Konservatorium und Vytautas-Magnus-Universität in Litauen."},
+        {yr:"2005 – 2010", h:"Meisterkurse im Ausland", p:"Im Rahmen der Erasmus-Dozentenmobilität und des Nordplus-Austauschprogramms: Konservatorien und Universitäten in Lissabon (2005), Kopenhagen (2005–2006), Cagliari (2009), Oslo (2009). Im Rahmen des Fulbright-Programms: Boston University (2009), Longy School of Music und Berklee College of Music in Boston (2010)."},
+        {yr:"2002 – 2004", h:"Internationaler Kišomprė-Wettbewerb, Frankreich", p:"Jurymitglied."}
+      ],
+      footerCta:"Offizielle Website",
+      colophon:"Inhalte nach der Biografie des Künstlers.<br>Porträt aus dem Archiv des Künstlers."
+    }
+  };
+
+  var STRINGS = [
+    {note:"G", hz:"196"},
+    {note:"D", hz:"294"},
+    {note:"A", hz:"440"},
+    {note:"E", hz:"659"}
+  ];
+
+  function esc(s){
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+
+  function entry(e){
+    return '<div class="entry">' +
+      '<div class="yr' + (e.open ? " open" : "") + '">' + esc(e.yr) + '</div>' +
+      '<div><h3>' + esc(e.h) + '</h3>' +
+      (e.p ? '<p>' + esc(e.p) + '</p>' : '') +
+      (e.tag ? '<span class="tag">' + esc(e.tag) + '</span>' : '') +
+      '</div></div>';
+  }
+
+  function nameList(items){
+    return '<ul class="names">' + items.map(function(it){
+      if (typeof it === "string") return '<li>' + esc(it) + '</li>';
+      return '<li>' + esc(it.n) + ' <small>' + esc(it.y) + '</small></li>';
+    }).join("") + '</ul>';
+  }
+
+  function sectionHead(s){
+    return '<div class="sec-head"><span class="n">' + esc(s.n) + '</span><h2>' + esc(s.t) + '</h2></div>';
+  }
+
+  function render(lang){
+    var d = C[lang];
+
+    var strings = STRINGS.map(function(s){
+      return '<div class="string"><span>' + s.note + '</span><i></i></div>';
+    }).join("");
+
+    var html = '';
+
+    /* hero */
+    html += '<div class="hero"><div class="hero-grid">' +
+      '<figure class="portrait" style="margin:0">' +
+        '<img src="' + PORTRAIT + '" alt="' + esc(d.given + " " + d.sur) + '" width="339" height="511">' +
+        '<figcaption>' + esc(d.portraitCap) + '</figcaption>' +
+      '</figure>' +
+      '<div>' +
+        '<p class="eyebrow">' + esc(d.eyebrow) + '</p>' +
+        '<h1>' + esc(d.given) + '<span class="sur">' + esc(d.sur) + '</span></h1>' +
+        '<p class="lead">' + esc(d.lead) + '</p>' +
+        '<ul class="roles">' + d.roles.map(function(r){ return '<li>' + esc(r) + '</li>'; }).join("") + '</ul>' +
+      '</div>' +
+    '</div><div class="strings" aria-hidden="true">' + strings + '</div></div>';
+
+    /* I. bio */
+    html += '<section>' + sectionHead(d.sections.bio) +
+      '<div class="prose">' +
+      d.bio.map(function(p,i){ return '<p' + (i===0 ? ' class="first"' : '') + '>' + p + '</p>'; }).join("") +
+      '</div></section>';
+
+    /* II. formation */
+    html += '<section>' + sectionHead(d.sections.formation) +
+      '<div class="rail">' + d.formation.map(entry).join("") + '</div>' +
+      '<div class="block"><p class="label">' + esc(d.mastersLabel) + '</p>' + nameList(d.masters) + '</div>' +
+      '</section>';
+
+    /* III. awards */
+    html += '<section>' + sectionHead(d.sections.awards) +
+      '<div class="rail">' + d.awards.map(entry).join("") + '</div></section>';
+
+    /* IV. stage */
+    html += '<section>' + sectionHead(d.sections.stage) +
+      '<div class="block"><p class="label">' + esc(d.orchLabel) + '</p>' + nameList(d.orchestras) + '</div>' +
+      '<div class="block"><p class="label">' + esc(d.partLabel) + '</p>' + nameList(d.partners) + '</div>' +
+      '<div class="block"><p class="label">' + esc(d.archLabel) + '</p>' + nameList(d.archives) + '</div>' +
+      '</section>';
+
+    /* V. teaching */
+    html += '<section>' + sectionHead(d.sections.teaching) +
+      '<div class="rail">' + d.teaching.map(entry).join("") + '</div>' +
+      '<div class="block featured">' +
+        '<span class="yr">' + esc(d.academy.yr) + '</span>' +
+        '<h3>' + esc(d.academy.h) + '</h3>' +
+        '<p>' + esc(d.academy.p) + '</p>' +
+      '</div></section>';
+
+    /* footer */
+    html += '<footer>' +
+      '<a class="site-link" href="https://www.vonbekker.com" target="_blank" rel="noopener noreferrer">vonbekker.com</a>' +
+      '<p class="colophon">' + esc(d.footerCta) + '<br><br>' + d.colophon + '</p>' +
+      '</footer>';
+
+    document.getElementById("main").innerHTML = html;
+    document.documentElement.lang = d.htmlLang;
+
+    var btns = document.querySelectorAll("#langs button");
+    for (var i = 0; i < btns.length; i++){
+      btns[i].setAttribute("aria-pressed", btns[i].getAttribute("data-lang") === lang ? "true" : "false");
+    }
+    try { localStorage.setItem("mvb-lang", lang); } catch(e){}
+  }
+
+  function initialLang(){
+    try {
+      var saved = localStorage.getItem("mvb-lang");
+      if (saved && C[saved]) return saved;
+    } catch(e){}
+    var nav = (navigator.language || "").slice(0,2).toLowerCase();
+    if (C[nav]) return nav;
+    return "lt";
+  }
+
+  document.getElementById("langs").addEventListener("click", function(ev){
+    var b = ev.target.closest("button[data-lang]");
+    if (b) render(b.getAttribute("data-lang"));
+  });
+
+  render(initialLang());
+})();
+</script>

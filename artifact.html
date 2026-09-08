@@ -1,0 +1,602 @@
+<title>Švėgžda von Bekkeris</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* ---- tokens: one committed world, the hall during a performance ---- */
+  :root{
+    --ground:#131110;
+    --ground-2:#1A1715;
+    --surface:#1C1917;
+    --paper:#EFE9E0;
+    --muted:#9C9188;
+    --faint:#6E655D;
+    --rule:#2E2924;
+    --varnish:#C68A42;
+    --varnish-dim:#8A6230;
+
+    --f-display:"Bodoni Moda","Didot","Bodoni MT",Georgia,serif;
+    --f-body:"Archivo","Helvetica Neue",Arial,sans-serif;
+    --f-data:"IBM Plex Mono","SFMono-Regular",Menlo,monospace;
+
+    --measure:63ch;
+    --rail:6.5rem;
+    --pad:clamp(1.25rem,5vw,4rem);
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--paper);
+    font-family:var(--f-body);
+    font-size:clamp(15px,0.55vw + 13.4px,17px);
+    line-height:1.65;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  [hidden]{display:none!important}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--varnish);outline-offset:3px;border-radius:2px}
+
+  .wrap{max-width:66rem;margin:0 auto;padding-inline:var(--pad)}
+
+  /* ---- language switcher ---- */
+  .topbar{
+    position:sticky;top:0;z-index:40;
+    background:rgba(19,17,16,0.92);
+    background:color-mix(in srgb,var(--ground) 88%,transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--rule);
+  }
+  .topbar-in{
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    max-width:66rem;margin:0 auto;padding:0.7rem var(--pad);
+  }
+  .sigil{
+    font-family:var(--f-display);font-size:0.95rem;letter-spacing:0.02em;
+    color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .langs{display:flex;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:2px;flex:none}
+  .langs button{
+    appearance:none;border:0;cursor:pointer;
+    background:var(--ground);color:var(--muted);
+    font-family:var(--f-data);font-size:0.7rem;font-weight:500;
+    letter-spacing:0.09em;padding:0.42rem 0.7rem;
+    transition:color .18s ease,background .18s ease;
+  }
+  .langs button:hover{color:var(--paper)}
+  .langs button[aria-pressed="true"]{background:var(--varnish);color:#17130E}
+
+  /* ---- hero ---- */
+  .hero{padding-block:clamp(2.5rem,7vw,5.5rem) clamp(2.5rem,6vw,4.5rem)}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(1.75rem,4vw,3.25rem);align-items:end}
+  @media (min-width:820px){ .hero-grid{grid-template-columns:15.5rem minmax(0,1fr)} }
+
+  .portrait{
+    position:relative;border:1px solid var(--rule);background:var(--ground-2);
+    max-width:15.5rem;
+  }
+  .portrait img{width:100%;height:auto;filter:contrast(1.06) brightness(0.97)}
+  .portrait figcaption{
+    font-family:var(--f-data);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--faint);padding:0.5rem 0.6rem;border-top:1px solid var(--rule);
+  }
+
+  .eyebrow{
+    font-family:var(--f-data);font-size:0.68rem;font-weight:500;
+    letter-spacing:0.22em;text-transform:uppercase;color:var(--varnish);
+    margin:0 0 1rem;
+  }
+  h1{
+    font-family:var(--f-display);font-weight:400;
+    font-size:clamp(2.35rem,7.2vw,4.6rem);
+    line-height:0.98;letter-spacing:-0.012em;
+    margin:0;text-wrap:balance;
+  }
+  h1 .sur{display:block;font-style:italic;font-weight:400}
+  .lead{
+    font-family:var(--f-display);font-style:italic;
+    font-size:clamp(1.05rem,1.9vw,1.3rem);line-height:1.45;
+    color:var(--paper);margin:1.4rem 0 0;max-width:34ch;
+  }
+  .roles{
+    margin:1.5rem 0 0;padding:0;list-style:none;
+    display:flex;flex-wrap:wrap;gap:0.35rem 1.1rem;
+    font-size:0.83rem;color:var(--muted);max-width:52ch;
+  }
+  .roles li{position:relative;padding-left:0.85rem}
+  .roles li::before{
+    content:"";position:absolute;left:0;top:0.62em;
+    width:3px;height:3px;border-radius:50%;background:var(--varnish-dim);
+  }
+
+  /* ---- the four strings: G D A E, tuned in fifths ---- */
+  .strings{margin-top:clamp(2.25rem,5vw,3.25rem);display:grid;gap:0.72rem}
+  .string{display:grid;grid-template-columns:1.35rem 1fr;align-items:center;gap:0.75rem}
+  .string span{
+    font-family:var(--f-data);font-size:0.6rem;letter-spacing:0.08em;
+    color:var(--faint);
+  }
+  .string i{
+    display:block;background:linear-gradient(90deg,var(--rule),#4A4239 45%,var(--rule));
+    transform-origin:center;
+  }
+  .string:nth-child(1) i{height:2.4px}
+  .string:nth-child(2) i{height:1.9px}
+  .string:nth-child(3) i{height:1.4px}
+  .string:nth-child(4) i{height:1px}
+  @media (prefers-reduced-motion:no-preference){
+    .string i{animation:bow 7s ease-in-out infinite}
+    .string:nth-child(1) i{animation-delay:0s}
+    .string:nth-child(2) i{animation-delay:.45s}
+    .string:nth-child(3) i{animation-delay:.9s}
+    .string:nth-child(4) i{animation-delay:1.35s}
+  }
+  @keyframes bow{
+    0%,72%,100%{transform:scaleY(1);opacity:.8}
+    76%{transform:scaleY(2.6);opacity:1}
+    82%{transform:scaleY(1.5);opacity:.95}
+    88%{transform:scaleY(1.15);opacity:.85}
+  }
+
+  /* ---- sections ---- */
+  section{padding-block:clamp(2.75rem,6vw,4.5rem);border-top:1px solid var(--rule)}
+  .sec-head{
+    display:flex;align-items:baseline;gap:1rem;
+    margin:0 0 clamp(1.5rem,3vw,2.25rem);
+  }
+  .sec-head h2{
+    font-family:var(--f-display);font-weight:400;
+    font-size:clamp(1.5rem,3.1vw,2.05rem);line-height:1.1;
+    margin:0;letter-spacing:-0.005em;text-wrap:balance;
+  }
+  .sec-head .n{
+    font-family:var(--f-data);font-size:0.66rem;letter-spacing:0.14em;
+    color:var(--varnish);flex:none;padding-top:0.15em;
+  }
+
+  .prose{max-width:var(--measure)}
+  .prose p{margin:0 0 1.15em}
+  .prose p:last-child{margin-bottom:0}
+  .prose p.first{
+    font-size:1.1em;color:var(--paper);
+  }
+  .prose p{color:var(--muted)}
+  .prose strong{color:var(--paper);font-weight:500}
+
+  /* ---- year rail: the spine of a chronology ---- */
+  .rail{display:grid;gap:0}
+  .entry{
+    display:grid;grid-template-columns:var(--rail) minmax(0,1fr);
+    gap:0 clamp(1rem,2.5vw,2rem);
+    padding-block:1.1rem;
+    border-top:1px solid var(--rule);
+  }
+  .entry:first-child{border-top:0;padding-top:0}
+  .entry .yr{
+    font-family:var(--f-data);font-size:0.74rem;font-weight:500;
+    font-variant-numeric:tabular-nums;letter-spacing:0.01em;
+    color:var(--varnish);padding-top:0.28em;white-space:nowrap;
+  }
+  .entry .yr.open{color:var(--paper)}
+  .entry h3{
+    font-family:var(--f-body);font-weight:500;font-size:1rem;
+    margin:0;line-height:1.4;color:var(--paper);
+  }
+  .entry p{margin:0.3rem 0 0;color:var(--muted);font-size:0.92rem;max-width:58ch}
+  .entry .tag{
+    display:inline-block;margin-top:0.55rem;
+    font-family:var(--f-data);font-size:0.62rem;letter-spacing:0.11em;
+    text-transform:uppercase;color:var(--varnish);
+    border:1px solid var(--varnish-dim);border-radius:2px;padding:0.18rem 0.44rem;
+  }
+  @media (max-width:560px){
+    .entry{grid-template-columns:minmax(0,1fr);gap:0.4rem}
+    .entry .yr{padding-top:0}
+  }
+
+  /* ---- name lists ---- */
+  .block{margin-top:clamp(2rem,4vw,2.75rem)}
+  .block:first-child{margin-top:0}
+  .label{
+    font-family:var(--f-data);font-size:0.66rem;font-weight:500;
+    letter-spacing:0.16em;text-transform:uppercase;color:var(--faint);
+    margin:0 0 0.9rem;
+  }
+  .names{
+    margin:0;padding:0;list-style:none;
+    display:flex;flex-wrap:wrap;gap:0.3rem 0;
+    max-width:62rem;
+  }
+  .names li{font-size:0.94rem;color:var(--paper);padding-right:0.9rem;margin-right:0.9rem;position:relative}
+  .names li::after{
+    content:"";position:absolute;right:0;top:0.62em;
+    width:3px;height:3px;border-radius:50%;background:var(--varnish-dim);
+  }
+  .names li:last-child::after{display:none}
+  .names li small{color:var(--muted);font-size:0.85em}
+
+  /* ---- academy: the one raised object on the page ---- */
+  .featured{
+    background:var(--surface);border:1px solid var(--rule);
+    border-left:2px solid var(--varnish);
+    padding:clamp(1.4rem,3.4vw,2.2rem);
+    display:grid;gap:0.8rem;
+  }
+  .featured .yr{
+    font-family:var(--f-data);font-size:0.72rem;font-weight:500;
+    letter-spacing:0.08em;color:var(--varnish);
+  }
+  .featured h3{
+    font-family:var(--f-display);font-weight:400;font-size:clamp(1.35rem,2.7vw,1.8rem);
+    margin:0;line-height:1.15;letter-spacing:-0.005em;
+  }
+  .featured p{margin:0;color:var(--muted);max-width:52ch}
+
+  /* ---- footer ---- */
+  footer{border-top:1px solid var(--rule);padding-block:clamp(2.5rem,5vw,3.5rem) 3rem}
+  .site-link{
+    font-family:var(--f-display);font-size:clamp(1.5rem,4vw,2.4rem);
+    text-decoration:none;color:var(--paper);
+    border-bottom:1px solid var(--varnish-dim);
+    padding-bottom:0.1em;transition:color .2s ease,border-color .2s ease;
+    display:inline-block;
+  }
+  .site-link:hover{color:var(--varnish);border-color:var(--varnish)}
+  .colophon{
+    margin-top:2.25rem;font-family:var(--f-data);font-size:0.66rem;
+    letter-spacing:0.06em;color:var(--faint);line-height:1.8;
+  }
+</style>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <div class="sigil">Martynas Švėgžda von Bekkeris</div>
+    <div class="langs" role="group" id="langs">
+      <button type="button" data-lang="lt" lang="lt">LT</button>
+      <button type="button" data-lang="en" lang="en">EN</button>
+      <button type="button" data-lang="de" lang="de">DE</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main"></main>
+
+<script>
+(function(){
+  "use strict";
+
+  var PORTRAIT = "data:image/jpeg;base64,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";
+
+  var C = {
+    lt:{
+      htmlLang:"lt",
+      eyebrow:"Smuikininkas",
+      given:"Martynas Švėgžda",
+      sur:"von Bekkeris",
+      lead:"Nuo pirmojo rečitalio septynerių metų amžiaus — koncertų salės Europoje, JAV ir Azijoje.",
+      portraitCap:"Portretas",
+      roles:[
+        "Lietuvos muzikos ir teatro akademijos docentas",
+        "Johanneso Brahmso konservatorijos Hamburge docentas",
+        "„Alternative Academy of Arts“ įkūrėjas"
+      ],
+      sections:{
+        bio:{n:"I", t:"Biografija"},
+        formation:{n:"II", t:"Mokykla"},
+        awards:{n:"III", t:"Konkursai ir pripažinimas"},
+        stage:{n:"IV", t:"Scenoje"},
+        teaching:{n:"V", t:"Pedagogika"}
+      },
+      bio:[
+        "Martynas Švėgžda von Bekkeris gimė 1967 m. Vilniuje. Sulaukęs penkerių pirmąsias smuiko pamokas gavo iš savo močiutės <strong>E. Strazdaitės-Bekerienės</strong>, studijavusios pas L. Auer, J. Mařak, J. Feld ir J. Thibaud. Septynerių sugrojo pirmąjį rečitalį, o vienuolikos — koncertavo su Lietuvos valstybiniu simfoniniu orkestru.",
+        "Nuo 1990 m. aktyviai rengia solinius ir kamerinės muzikos koncertus Europoje, JAV ir Azijoje. 1997 ir 2009 m. jam suteiktas <strong>Lietuvos Respublikos kultūros garbės atašė</strong> titulas. Nuo 2003 m. — Lietuvos muzikos ir teatro akademijos docentas, nuo 2016 m. — Hamburgo Johanneso Brahmso konservatorijos docentas."
+      ],
+      formation:[
+        {yr:"1973 – 1986", h:"M. K. Čiurlionio menų gimnazija", p:"Vilnius, Lietuva."},
+        {yr:"1986 – 1989", h:"Lietuvos valstybinė konservatorija", p:"Prof. R. Katiliaus klasė."},
+        {yr:"1989 – 1996", h:"Hamburgo muzikos ir teatro aukštoji mokykla", p:"Prof. M. Lubotsky klasė. Studijas baigė su pagyrimu; baigiamasis egzaminas — koncertas.", tag:"Su pagyrimu"}
+      ],
+      mastersLabel:"Tobulinosi pas",
+      masters:[
+        {n:"Eberhard Feltz", y:"1983"},
+        {n:"Igor Bezrodny", y:"1986"},
+        {n:"Igor Oistrach", y:"1988"},
+        {n:"Volker Balfield", y:"1990–1992"},
+        {n:"Ralf Gothoni", y:"1990–1992"},
+        {n:"Detlev Kraus", y:"1990–1992"},
+        {n:"Boris Garlitsky", y:"1996"}
+      ],
+      awards:[
+        {yr:"1983", h:"Tarptautinis Jaroslavo Kociano smuikininkų konkursas", p:"Čekija.", tag:"IV vieta"},
+        {yr:"1984", h:"Lietuvos jaunųjų smuikininkų konkursas", p:"", tag:"II vieta"},
+        {yr:"1990", h:"Tarptautinis Brahmso smuikininkų konkursas", p:"", tag:"III vieta"},
+        {yr:"1991 – 1995", h:"Fortepijoninis trio „Coloris“", p:"Aktyvi koncertinė veikla Lietuvoje ir Vokietijoje. Pirmieji Elise Meyer fondo apdovanojimai; antrojo Hausmanno muzikos konkurso Hamburge laureatas."},
+        {yr:"1997 · 2009", h:"Lietuvos Respublikos kultūros garbės atašė", p:"Titulas suteiktas du kartus."}
+      ],
+      orchLabel:"Orkestrai",
+      orchestras:[
+        "Berlyno simfoninis orkestras","Gruzijos simfoninis orkestras","Lietuvos valstybinis simfoninis orkestras",
+        "Lietuvos kamerinis orkestras","Hamburgo simfoninis orkestras","„Gloriamus“ filharmonijos orkestras, Džakarta"
+      ],
+      partLabel:"Kartu su",
+      partners:["H.-D. Baum","K.-P. Seibel","G. Tshitshinadze","I. Uriasch","N. Lugansky","D. Kraus","S. Sondeckis","M. Lubotsky","D. McTier","G. Rivinius","Y. Mazurkevich"],
+      archLabel:"Koncertų įrašai saugomi",
+      archives:[
+        {n:"LRT", y:"Lietuva"},{n:"SWR", y:"Vokietija"},{n:"NDR", y:"Vokietija"},
+        {n:"Ostankino", y:"Rusija"},{n:"Chalom Canal", y:"Prancūzija"},{n:"ICTV", y:"Islandija"}
+      ],
+      academy:{yr:"Nuo 2015", h:"Alternative Academy of Arts", p:"Tarptautinė mobili tarpdisciplininė meno akademija. Įkūrėjas."},
+      teaching:[
+        {yr:"Nuo 2003", open:true, h:"Lietuvos muzikos ir teatro akademija", p:"Docentas."},
+        {yr:"Nuo 2016", open:true, h:"Johanneso Brahmso konservatorija, Hamburgas", p:"Docentas."},
+        {yr:"Nuo 2014", open:true, h:"Kasmetiniai meistriškumo kursai", p:"Tarptautinė Alfredo Schnittke’s akademija ir Johanneso Brahmso konservatorija Hamburge; Stasio Šimkaus konservatorija ir Vytauto Didžiojo universitetas Lietuvoje."},
+        {yr:"2005 – 2010", h:"Meistriškumo kursai užsienyje", p:"Pagal „Erasmus“ docentų mobilumo ir „Nordplus“ mainų programas: Lisabonos konservatorijos ir universitetai (2005), Kopenhaga (2005–2006), Kaljaris (2009), Oslas (2009). Pagal Fulbrighto programą: Bostono universitetas (2009), Longy muzikos mokykla ir Berklio muzikos koledžas Bostone (2010)."},
+        {yr:"2002 – 2004", h:"Tarptautinis Kišomprė konkursas, Prancūzija", p:"Žiuri narys."}
+      ],
+      footerCta:"Oficiali svetainė",
+      colophon:"Turinys parengtas pagal atlikėjo biografiją.<br>Portretas — iš atlikėjo archyvo."
+    },
+
+    en:{
+      htmlLang:"en",
+      eyebrow:"Violinist",
+      given:"Martynas Švėgžda",
+      sur:"von Bekkeris",
+      lead:"From a first recital at the age of seven to concert halls across Europe, the United States and Asia.",
+      portraitCap:"Portrait",
+      roles:[
+        "Associate Professor, Lithuanian Academy of Music and Theatre",
+        "Associate Professor, Johannes Brahms Conservatory Hamburg",
+        "Founder, Alternative Academy of Arts"
+      ],
+      sections:{
+        bio:{n:"I", t:"Biography"},
+        formation:{n:"II", t:"Training"},
+        awards:{n:"III", t:"Competitions and honours"},
+        stage:{n:"IV", t:"On stage"},
+        teaching:{n:"V", t:"Teaching"}
+      },
+      bio:[
+        "Martynas Švėgžda von Bekkeris was born in 1967 in Vilnius, Lithuania. At the age of five he received his first violin lessons from his grandmother, <strong>E. Strazdaitė-Bekerienė</strong>, who had studied with L. Auer, J. Mařak, J. Feld and J. Thibaud. He gave his first recital at seven and appeared with the Lithuanian State Symphony Orchestra at eleven.",
+        "Since 1990 he has performed solo and chamber music recitals throughout Europe, the United States and Asia. In 1997 and again in 2009 he was named <strong>Honorary Cultural Attaché of the Republic of Lithuania</strong>. He has taught at the Lithuanian Academy of Music and Theatre since 2003, and at the Johannes Brahms Conservatory in Hamburg since 2016."
+      ],
+      formation:[
+        {yr:"1973 – 1986", h:"M. K. Čiurlionis School of Art", p:"Vilnius, Lithuania."},
+        {yr:"1986 – 1989", h:"Lithuanian State Conservatoire", p:"Class of Prof. R. Katilius."},
+        {yr:"1989 – 1996", h:"Hochschule für Musik und Theater Hamburg", p:"Class of Prof. M. Lubotsky. Graduated with distinction; final examination given as a public concert.", tag:"With distinction"}
+      ],
+      mastersLabel:"Further studies with",
+      masters:[
+        {n:"Eberhard Feltz", y:"1983"},
+        {n:"Igor Bezrodny", y:"1986"},
+        {n:"Igor Oistrach", y:"1988"},
+        {n:"Volker Balfield", y:"1990–1992"},
+        {n:"Ralf Gothoni", y:"1990–1992"},
+        {n:"Detlev Kraus", y:"1990–1992"},
+        {n:"Boris Garlitsky", y:"1996"}
+      ],
+      awards:[
+        {yr:"1983", h:"Jaroslav Kocian International Violin Competition", p:"Czech Republic.", tag:"4th prize"},
+        {yr:"1984", h:"Lithuanian Young Violinists Competition", p:"", tag:"2nd prize"},
+        {yr:"1990", h:"International Brahms Violin Competition", p:"", tag:"3rd prize"},
+        {yr:"1991 – 1995", h:"Coloris Piano Trio", p:"An active concert life in Lithuania and Germany. First prizes of the Elise Meyer Foundation; laureate of the second Hausmann Music Competition in Hamburg."},
+        {yr:"1997 · 2009", h:"Honorary Cultural Attaché of the Republic of Lithuania", p:"Awarded on two occasions."}
+      ],
+      orchLabel:"Orchestras",
+      orchestras:[
+        "Berlin Symphony Orchestra","Georgian Symphony Orchestra","Lithuanian State Symphony Orchestra",
+        "Lithuanian Chamber Orchestra","Hamburg Symphony Orchestra","Gloriamus Philharmonic Orchestra, Jakarta"
+      ],
+      partLabel:"Alongside",
+      partners:["H.-D. Baum","K.-P. Seibel","G. Tshitshinadze","I. Uriasch","N. Lugansky","D. Kraus","S. Sondeckis","M. Lubotsky","D. McTier","G. Rivinius","Y. Mazurkevich"],
+      archLabel:"Concert recordings held by",
+      archives:[
+        {n:"LRT", y:"Lithuania"},{n:"SWR", y:"Germany"},{n:"NDR", y:"Germany"},
+        {n:"Ostankino", y:"Russia"},{n:"Chalom Canal", y:"France"},{n:"ICTV", y:"Iceland"}
+      ],
+      academy:{yr:"Since 2015", h:"Alternative Academy of Arts", p:"An international, mobile, interdisciplinary academy of the arts. Founder."},
+      teaching:[
+        {yr:"Since 2003", open:true, h:"Lithuanian Academy of Music and Theatre", p:"Associate Professor."},
+        {yr:"Since 2016", open:true, h:"Johannes Brahms Conservatory, Hamburg", p:"Associate Professor."},
+        {yr:"Since 2014", open:true, h:"Annual masterclasses", p:"International Alfred Schnittke Academy and Johannes Brahms Conservatory in Hamburg; Stasys Šimkus Conservatory and Vytautas Magnus University in Lithuania."},
+        {yr:"2005 – 2010", h:"Masterclasses abroad", p:"Under the Erasmus teaching mobility and Nordplus exchange programmes: conservatoires and universities in Lisbon (2005), Copenhagen (2005–2006), Cagliari (2009), Oslo (2009). Under the Fulbright programme: Boston University (2009), Longy School of Music and Berklee College of Music in Boston (2010)."},
+        {yr:"2002 – 2004", h:"Kišomprė International Competition, France", p:"Jury member."}
+      ],
+      footerCta:"Official site",
+      colophon:"Content compiled from the artist’s biography.<br>Portrait from the artist’s archive."
+    },
+
+    de:{
+      htmlLang:"de",
+      eyebrow:"Geiger",
+      given:"Martynas Švėgžda",
+      sur:"von Bekkeris",
+      lead:"Vom ersten Rezital mit sieben Jahren zu Konzertsälen in Europa, den USA und Asien.",
+      portraitCap:"Porträt",
+      roles:[
+        "Dozent an der Litauischen Musik- und Theaterakademie",
+        "Dozent am Johannes-Brahms-Konservatorium Hamburg",
+        "Gründer der Alternative Academy of Arts"
+      ],
+      sections:{
+        bio:{n:"I", t:"Biografie"},
+        formation:{n:"II", t:"Ausbildung"},
+        awards:{n:"III", t:"Wettbewerbe und Auszeichnungen"},
+        stage:{n:"IV", t:"Auf der Bühne"},
+        teaching:{n:"V", t:"Lehre"}
+      },
+      bio:[
+        "Martynas Švėgžda von Bekkeris wurde 1967 in Vilnius, Litauen, geboren. Mit fünf Jahren erhielt er seinen ersten Geigenunterricht von seiner Großmutter <strong>E. Strazdaitė-Bekerienė</strong>, die bei L. Auer, J. Mařak, J. Feld und J. Thibaud studiert hatte. Mit sieben spielte er sein erstes Rezital, mit elf konzertierte er mit dem Litauischen Staatlichen Sinfonieorchester.",
+        "Seit 1990 gibt er Solo- und Kammermusikkonzerte in Europa, den USA und Asien. 1997 und erneut 2009 wurde ihm der Titel <strong>Ehrenkulturattaché der Republik Litauen</strong> verliehen. Seit 2003 lehrt er an der Litauischen Musik- und Theaterakademie, seit 2016 am Johannes-Brahms-Konservatorium Hamburg."
+      ],
+      formation:[
+        {yr:"1973 – 1986", h:"M.-K.-Čiurlionis-Kunstgymnasium", p:"Vilnius, Litauen."},
+        {yr:"1986 – 1989", h:"Staatliches Konservatorium Litauens", p:"Klasse von Prof. R. Katilius."},
+        {yr:"1989 – 1996", h:"Hochschule für Musik und Theater Hamburg", p:"Klasse von Prof. M. Lubotsky. Abschluss mit Auszeichnung; die Abschlussprüfung wurde als Konzert abgelegt.", tag:"Mit Auszeichnung"}
+      ],
+      mastersLabel:"Weiterbildung bei",
+      masters:[
+        {n:"Eberhard Feltz", y:"1983"},
+        {n:"Igor Bezrodny", y:"1986"},
+        {n:"Igor Oistrach", y:"1988"},
+        {n:"Volker Balfield", y:"1990–1992"},
+        {n:"Ralf Gothoni", y:"1990–1992"},
+        {n:"Detlev Kraus", y:"1990–1992"},
+        {n:"Boris Garlitsky", y:"1996"}
+      ],
+      awards:[
+        {yr:"1983", h:"Internationaler Jaroslav-Kocian-Violinwettbewerb", p:"Tschechien.", tag:"4. Preis"},
+        {yr:"1984", h:"Litauischer Wettbewerb junger Geiger", p:"", tag:"2. Preis"},
+        {yr:"1990", h:"Internationaler Brahms-Violinwettbewerb", p:"", tag:"3. Preis"},
+        {yr:"1991 – 1995", h:"Klaviertrio „Coloris“", p:"Rege Konzerttätigkeit in Litauen und Deutschland. Erste Preise der Elise-Meyer-Stiftung; Preisträger des zweiten Hausmann-Musikwettbewerbs in Hamburg."},
+        {yr:"1997 · 2009", h:"Ehrenkulturattaché der Republik Litauen", p:"Zweimal verliehen."}
+      ],
+      orchLabel:"Orchester",
+      orchestras:[
+        "Berliner Sinfonie-Orchester","Georgisches Sinfonieorchester","Litauisches Staatliches Sinfonieorchester",
+        "Litauisches Kammerorchester","Hamburger Symphoniker","Gloriamus Philharmonisches Orchester, Jakarta"
+      ],
+      partLabel:"Gemeinsam mit",
+      partners:["H.-D. Baum","K.-P. Seibel","G. Tshitshinadze","I. Uriasch","N. Lugansky","D. Kraus","S. Sondeckis","M. Lubotsky","D. McTier","G. Rivinius","Y. Mazurkevich"],
+      archLabel:"Konzertmitschnitte in den Archiven von",
+      archives:[
+        {n:"LRT", y:"Litauen"},{n:"SWR", y:"Deutschland"},{n:"NDR", y:"Deutschland"},
+        {n:"Ostankino", y:"Russland"},{n:"Chalom Canal", y:"Frankreich"},{n:"ICTV", y:"Island"}
+      ],
+      academy:{yr:"Seit 2015", h:"Alternative Academy of Arts", p:"Eine internationale, mobile, interdisziplinäre Kunstakademie. Gründer."},
+      teaching:[
+        {yr:"Seit 2003", open:true, h:"Litauische Musik- und Theaterakademie", p:"Dozent."},
+        {yr:"Seit 2016", open:true, h:"Johannes-Brahms-Konservatorium, Hamburg", p:"Dozent."},
+        {yr:"Seit 2014", open:true, h:"Jährliche Meisterkurse", p:"Internationale Alfred-Schnittke-Akademie und Johannes-Brahms-Konservatorium in Hamburg; Stasys-Šimkus-Konservatorium und Vytautas-Magnus-Universität in Litauen."},
+        {yr:"2005 – 2010", h:"Meisterkurse im Ausland", p:"Im Rahmen der Erasmus-Dozentenmobilität und des Nordplus-Austauschprogramms: Konservatorien und Universitäten in Lissabon (2005), Kopenhagen (2005–2006), Cagliari (2009), Oslo (2009). Im Rahmen des Fulbright-Programms: Boston University (2009), Longy School of Music und Berklee College of Music in Boston (2010)."},
+        {yr:"2002 – 2004", h:"Internationaler Kišomprė-Wettbewerb, Frankreich", p:"Jurymitglied."}
+      ],
+      footerCta:"Offizielle Website",
+      colophon:"Inhalte nach der Biografie des Künstlers.<br>Porträt aus dem Archiv des Künstlers."
+    }
+  };
+
+  var STRINGS = [
+    {note:"G", hz:"196"},
+    {note:"D", hz:"294"},
+    {note:"A", hz:"440"},
+    {note:"E", hz:"659"}
+  ];
+
+  function esc(s){
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+
+  function entry(e){
+    return '<div class="entry">' +
+      '<div class="yr' + (e.open ? " open" : "") + '">' + esc(e.yr) + '</div>' +
+      '<div><h3>' + esc(e.h) + '</h3>' +
+      (e.p ? '<p>' + esc(e.p) + '</p>' : '') +
+      (e.tag ? '<span class="tag">' + esc(e.tag) + '</span>' : '') +
+      '</div></div>';
+  }
+
+  function nameList(items){
+    return '<ul class="names">' + items.map(function(it){
+      if (typeof it === "string") return '<li>' + esc(it) + '</li>';
+      return '<li>' + esc(it.n) + ' <small>' + esc(it.y) + '</small></li>';
+    }).join("") + '</ul>';
+  }
+
+  function sectionHead(s){
+    return '<div class="sec-head"><span class="n">' + esc(s.n) + '</span><h2>' + esc(s.t) + '</h2></div>';
+  }
+
+  function render(lang){
+    var d = C[lang];
+
+    var strings = STRINGS.map(function(s){
+      return '<div class="string"><span>' + s.note + '</span><i></i></div>';
+    }).join("");
+
+    var html = '';
+
+    /* hero */
+    html += '<div class="hero"><div class="hero-grid">' +
+      '<figure class="portrait" style="margin:0">' +
+        '<img src="' + PORTRAIT + '" alt="' + esc(d.given + " " + d.sur) + '" width="339" height="511">' +
+        '<figcaption>' + esc(d.portraitCap) + '</figcaption>' +
+      '</figure>' +
+      '<div>' +
+        '<p class="eyebrow">' + esc(d.eyebrow) + '</p>' +
+        '<h1>' + esc(d.given) + '<span class="sur">' + esc(d.sur) + '</span></h1>' +
+        '<p class="lead">' + esc(d.lead) + '</p>' +
+        '<ul class="roles">' + d.roles.map(function(r){ return '<li>' + esc(r) + '</li>'; }).join("") + '</ul>' +
+      '</div>' +
+    '</div><div class="strings" aria-hidden="true">' + strings + '</div></div>';
+
+    /* I. bio */
+    html += '<section>' + sectionHead(d.sections.bio) +
+      '<div class="prose">' +
+      d.bio.map(function(p,i){ return '<p' + (i===0 ? ' class="first"' : '') + '>' + p + '</p>'; }).join("") +
+      '</div></section>';
+
+    /* II. formation */
+    html += '<section>' + sectionHead(d.sections.formation) +
+      '<div class="rail">' + d.formation.map(entry).join("") + '</div>' +
+      '<div class="block"><p class="label">' + esc(d.mastersLabel) + '</p>' + nameList(d.masters) + '</div>' +
+      '</section>';
+
+    /* III. awards */
+    html += '<section>' + sectionHead(d.sections.awards) +
+      '<div class="rail">' + d.awards.map(entry).join("") + '</div></section>';
+
+    /* IV. stage */
+    html += '<section>' + sectionHead(d.sections.stage) +
+      '<div class="block"><p class="label">' + esc(d.orchLabel) + '</p>' + nameList(d.orchestras) + '</div>' +
+      '<div class="block"><p class="label">' + esc(d.partLabel) + '</p>' + nameList(d.partners) + '</div>' +
+      '<div class="block"><p class="label">' + esc(d.archLabel) + '</p>' + nameList(d.archives) + '</div>' +
+      '</section>';
+
+    /* V. teaching */
+    html += '<section>' + sectionHead(d.sections.teaching) +
+      '<div class="rail">' + d.teaching.map(entry).join("") + '</div>' +
+      '<div class="block featured">' +
+        '<span class="yr">' + esc(d.academy.yr) + '</span>' +
+        '<h3>' + esc(d.academy.h) + '</h3>' +
+        '<p>' + esc(d.academy.p) + '</p>' +
+      '</div></section>';
+
+    /* footer */
+    html += '<footer>' +
+      '<a class="site-link" href="https://www.vonbekker.com" target="_blank" rel="noopener noreferrer">vonbekker.com</a>' +
+      '<p class="colophon">' + esc(d.footerCta) + '<br><br>' + d.colophon + '</p>' +
+      '</footer>';
+
+    document.getElementById("main").innerHTML = html;
+    document.documentElement.lang = d.htmlLang;
+
+    var btns = document.querySelectorAll("#langs button");
+    for (var i = 0; i < btns.length; i++){
+      btns[i].setAttribute("aria-pressed", btns[i].getAttribute("data-lang") === lang ? "true" : "false");
+    }
+    try { localStorage.setItem("mvb-lang", lang); } catch(e){}
+  }
+
+  function initialLang(){
+    try {
+      var saved = localStorage.getItem("mvb-lang");
+      if (saved && C[saved]) return saved;
+    } catch(e){}
+    var nav = (navigator.language || "").slice(0,2).toLowerCase();
+    if (C[nav]) return nav;
+    return "lt";
+  }
+
+  document.getElementById("langs").addEventListener("click", function(ev){
+    var b = ev.target.closest("button[data-lang]");
+    if (b) render(b.getAttribute("data-lang"));
+  });
+
+  render(initialLang());
+})();
+</script>
