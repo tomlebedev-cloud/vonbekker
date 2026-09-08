@@ -34,7 +34,9 @@ Norint prijungti `vonbekker.com` — pridėti `CNAME` failą su domenu ir nukrei
 ## Ką dar verta padaryti
 
 - **Didesnės nuotraukos.** Dabartinė iš PDF yra tik 339 px pločio — tinka portretui, bet ne plačiam vaizdui.
-- **Patikslinti du pavadinimus** (žr. CV): „Kišomprė“ konkursas Prancūzijoje (originali prancūziška rašyba)
-  ir „Jaroslav Kozian“ — greičiausiai Jaroslav **Kocian** konkursas Čekijoje. Svetainėje kol kas naudojama „Kocian“.
+- **„Kišomprė“ konkursas Prancūzijoje** — reikia originalios prancūziškos rašybos.
+  Šis pavadinimas neaptinkamas jokiame šaltinyje internete, tad rašyba nepatikrinta;
+  svetainėje kol kas paliktas CV variantas. Šaltinyje pažymėta `TODO` (3 vietos — LT, EN, DE).
+- ~~„Jaroslav Kozian“~~ → **Jaroslav Kocian** (Ústí nad Orlicí, Čekija) — ištaisyta, pridėtas miestas.
 - **Atnaujinti CV** — šaltinis iš 2018 m.
 - Repertuaras, įrašai, artimiausi koncertai — atskiros sekcijos, kai bus turinio.
