@@ -355,6 +355,12 @@
   var CONTACT_EMAIL = "";
   var FORM_ENDPOINT = "";
 
+  /* Nustatymo priminimas skirtas kūrėjui, ne lankytojams: rodomas tik atidarius
+     failą vietoje arba per localhost, niekada publikuotoje svetainėje. */
+  var IS_LOCAL = !location.hostname ||
+                 location.hostname === "localhost" ||
+                 location.hostname === "127.0.0.1";
+
 
   var C = {
     lt:{
@@ -732,7 +738,7 @@
         '</div>' +
       '</form>' +
       '<p class="form-status" id="form-status" hidden></p>' +
-      (CONTACT_EMAIL || FORM_ENDPOINT ? '' : '<p class="setup-note">' + esc(f.setup) + '</p>') +
+      (!IS_LOCAL || CONTACT_EMAIL || FORM_ENDPOINT ? '' : '<p class="setup-note">' + esc(f.setup) + '</p>') +
       '</section>';
   }
 
@@ -823,7 +829,7 @@
         return;
       }
 
-      show(f.setup);
+      show(IS_LOCAL ? f.setup : f.failPost);
     });
   }
 
