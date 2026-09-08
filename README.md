@@ -16,8 +16,12 @@ Martynui Švėgždai von Bekkeriui.
 
 ## Kaip keisti turinį
 
-Visas tekstas gyvena viename JS objekte `body.part.html` faile — `C.lt`, `C.en`, `C.de`.
-Trys kalbos turi vienodą struktūrą, tad keičiant reikia atnaujinti visas tris.
+Visas tekstas gyvena viename JS objekte `body.part.html` faile — `C.lt`, `C.en`, `C.de`, `C.fr`.
+Keturios kalbos turi vienodą struktūrą, tad keičiant reikia atnaujinti visas keturias.
+
+Turinys sudėtas iš dviejų CV: lietuviško (2018) ir vokiško (`backup/Kurzer-Lebenslauf.pdf`),
+kuris kur kas išsamesnis — iš jo paimta diskografija, Schnittke's premjera, salės,
+festivaliai ir stipendijos.
 
 Po redagavimo:
 

@@ -236,6 +236,10 @@
   }
   .featured p{margin:0;color:var(--muted);max-width:52ch}
 
+  .featured-pair{display:grid;gap:1px;background:var(--rule)}
+  @media (min-width:760px){ .featured-pair{grid-template-columns:1fr 1fr} }
+  .featured-pair .featured{border-left-width:2px;height:100%}
+
   /* ---- footer ---- */
   footer{border-top:1px solid var(--rule);padding-block:clamp(2.5rem,5vw,3.5rem) 3rem}
   .site-link{
@@ -322,6 +326,7 @@
       <button type="button" data-lang="lt" lang="lt">LT</button>
       <button type="button" data-lang="en" lang="en">EN</button>
       <button type="button" data-lang="de" lang="de">DE</button>
+      <button type="button" data-lang="fr" lang="fr">FR</button>
     </div>
   </div>
 </header>
@@ -373,16 +378,20 @@
         formation:{n:"II", t:"Mokykla"},
         awards:{n:"III", t:"Konkursai ir pripažinimas"},
         stage:{n:"IV", t:"Scenoje"},
-        teaching:{n:"V", t:"Pedagogika"}
+        disco:{n:"V", t:"Diskografija"},
+        teaching:{n:"VI", t:"Pedagogika"},
+        enquiry:{n:"VII", t:"Užklausa"}
       },
       bio:[
         "Martynas Švėgžda von Bekkeris gimė 1967 m. Vilniuje. Sulaukęs penkerių pirmąsias smuiko pamokas gavo iš savo močiutės <strong>E. Strazdaitės-Bekerienės</strong>, studijavusios pas L. Auer, J. Mařak, J. Feld ir J. Thibaud. Septynerių sugrojo pirmąjį rečitalį, o vienuolikos — koncertavo su Lietuvos valstybiniu simfoniniu orkestru.",
-        "Nuo 1990 m. aktyviai rengia solinius ir kamerinės muzikos koncertus Europoje, JAV ir Azijoje. 1997 ir 2009 m. jam suteiktas <strong>Lietuvos Respublikos kultūros garbės atašė</strong> titulas. Nuo 2003 m. — Lietuvos muzikos ir teatro akademijos docentas, nuo 2016 m. — Hamburgo Johanneso Brahmso konservatorijos docentas."
+        "1993 m. Hamburgo Laeiszhalle salėje su Hamburgo muzikos ir teatro aukštosios mokyklos simfoniniu orkestru atliko <strong>Alfredo Schnittke’s Pirmojo koncerto smuikui pasaulinę premjerą</strong>.",
+        "Nuo 1990 m. rengia solinius ir kamerinės muzikos koncertus Skandinavijoje, Baltijos šalyse, Prancūzijoje, Vokietijoje, Portugalijoje, Šveicarijoje, Rusijoje, JAV ir Azijoje. 1997 ir 2009 m. jam suteiktas <strong>Lietuvos Respublikos kultūros garbės atašė</strong> titulas."
       ],
       formation:[
-        {yr:"1973 – 1986", h:"M. K. Čiurlionio menų gimnazija", p:"Vilnius, Lietuva."},
-        {yr:"1986 – 1989", h:"Lietuvos valstybinė konservatorija", p:"Prof. R. Katiliaus klasė."},
-        {yr:"1989 – 1996", h:"Hamburgo muzikos ir teatro aukštoji mokykla", p:"Prof. M. Lubotsky klasė. Studijas baigė su pagyrimu; baigiamasis egzaminas — koncertas.", tag:"Su pagyrimu"}
+        {yr:"1973 – 1986", h:"M. K. Čiurlionio menų gimnazija", p:"Vilnius. Baigė su pagyrimu.", tag:"Su pagyrimu"},
+        {yr:"1986 – 1989", h:"Lietuvos valstybinė konservatorija", p:"Prof. R. Katiliaus klasė, Vilnius."},
+        {yr:"1989 – 1996", h:"Hamburgo muzikos ir teatro aukštoji mokykla", p:"Prof. M. Lubotsky klasė. Diplomas ir baigiamasis koncertinis egzaminas su pagyrimu.", tag:"Su pagyrimu"},
+        {yr:"Nuo 1993", open:true, h:"Sava smuiko klasė", p:"Prieš tai — profesorių R. Katiliaus Vilniuje ir M. Lubotsky Hamburge asistentas."}
       ],
       mastersLabel:"Tobulinosi pas",
       masters:[
@@ -398,47 +407,77 @@
         {yr:"1983", h:"Tarptautinis Jaroslavo Kociano smuikininkų konkursas", p:"Ūstis prie Orlicės, Čekija.", tag:"IV vieta"},
         {yr:"1984", h:"Lietuvos jaunųjų smuikininkų konkursas", p:"", tag:"II vieta"},
         {yr:"1990", h:"Tarptautinis Brahmso smuikininkų konkursas", p:"", tag:"III vieta"},
-        {yr:"1991 – 1995", h:"Fortepijoninis trio „Coloris“", p:"Aktyvi koncertinė veikla Lietuvoje ir Vokietijoje. Pirmieji Elise Meyer fondo apdovanojimai; antrojo Hausmanno muzikos konkurso Hamburge laureatas."},
-        {yr:"1997 · 2009", h:"Lietuvos Respublikos kultūros garbės atašė", p:"Titulas suteiktas du kartus."}
+        {yr:"1991 – 1995", h:"Fortepijoninis trio „Coloris“", p:"Koncertai Lietuvoje ir Vokietijoje. Pirmieji Elise Meyer fondo apdovanojimai; antrojo Hausmanno muzikos konkurso Hamburge laureatas."},
+        {yr:"1997 · 2009", h:"Lietuvos Respublikos kultūros garbės atašė", p:"Titulas suteiktas du kartus."},
+        {yr:"2013", h:"Garbės profesūra", p:"Džakartos konservatorija (Yayasan Pendidikan Musik), Indonezija."}
+      ],
+      scholarLabel:"Stipendijos",
+      scholarships:[
+        {n:"M. K. Čiurlionio stipendija, Vilnius", y:"1987"},
+        {n:"Rotary International, Hamburgas", y:"1989–1991"},
+        {n:"Masefield, Hamburgas", y:"1992"},
+        {n:"Oskar und Vera Ritter Stiftung, Hamburgas", y:"1993"},
+        {n:"Prancūzijos vyriausybės stipendija, Paryžius", y:"1996"},
+        {n:"Robert Schumann fondas, Paryžius", y:"1997"},
+        {n:"Cité des Arts International, Paryžius", y:"1997–1999"},
+        {n:"Lietuvos Respublikos menininko stipendija", y:"2005–2007"},
+        {n:"Fulbrighto stipendija, JAV", y:"2009–2010"},
+        {n:"Lietuvos Respublikos menininko stipendija", y:"2012"}
       ],
       orchLabel:"Orkestrai",
       orchestras:[
         "Berlyno simfoninis orkestras","Gruzijos simfoninis orkestras","Lietuvos valstybinis simfoninis orkestras",
-        "Lietuvos kamerinis orkestras","Hamburgo simfoninis orkestras","„Gloriamus“ filharmonijos orkestras, Džakarta"
+        "Lietuvos filharmonijos orkestras","Lietuvos kamerinis orkestras","Šv. Kristoforo kamerinis orkestras, Vilnius",
+        "Klaipėdos kamerinis orkestras","Mikkeli kamerinis orkestras, Suomija","Hamburgo simfoninis orkestras",
+        "Hamburgo filharmonija","„Gloriamus“ filharmonijos orkestras, Džakarta"
       ],
       partLabel:"Kartu su",
       partners:["H.-D. Baum","K.-P. Seibel","G. Tshitshinadze","I. Uriasch","N. Lugansky","D. Kraus","S. Sondeckis","M. Lubotsky","D. McTier","G. Rivinius","Y. Mazurkevich"],
+      venueLabel:"Salės ir festivaliai",
+      venues:[
+        "Čaikovskio koncertų salė, Maskva","Schauspielhaus, Berlynas","UNESCO, Paryžius",
+        "Lietuvos filharmonijos salė, Vilnius","Valstybinės kapelos salė, Sankt Peterburgas",
+        "Bostono universiteto koncertų salė","Laeiszhalle, Hamburgas","Kuhmo festivalis, Suomija",
+        "Les Arcs · La Baule · L’été Musicale, Prancūzija","Modern Music Festival, Ryga",
+        "Schleswig-Holstein Musik Festival","Appen Classics, Vokietija",
+        "Ostaškovo vasaros muzikos festivalis, Rusija","Bornholmo muzikos festivalis, Danija",
+        "Reikholto festivalis, Islandija"
+      ],
       archLabel:"Koncertų įrašai saugomi",
       archives:[
         {n:"LRT", y:"Lietuva"},{n:"SWR", y:"Vokietija"},{n:"NDR", y:"Vokietija"},
         {n:"Ostankino", y:"Rusija"},{n:"Chalom Canal", y:"Prancūzija"},{n:"ICTV", y:"Islandija"}
       ],
-      academy:{yr:"Nuo 2015", h:"Alternative Academy of Arts", p:"Tarptautinė mobili tarpdisciplininė meno akademija. Įkūrėjas."},
+      disco:[
+        {yr:"1991", h:"D. Šostakovičius · F. Mendelssohnas-Bartholdy", p:"Fortepijoniniai trio. Polygram, Vokietija."},
+        {yr:"1997", h:"Lietuvių kompozitorių kūriniai smuikui solo", p:"Dante, Prancūzija."},
+        {yr:"1998", h:"Romantinės miniatiūros smuikui ir fortepijonui", p:"Japis, Islandija."},
+        {yr:"2005", h:"Le son et le parole", p:"Autorinis miniatiūrų ciklas smuikui solo. MSVB, Lietuva."},
+        {yr:"2007", h:"Major Minor", p:"I. J. Pleyelio ir C. Stamitzo dvigubi koncertai smuikui ir altui. Lietuvos radijas."},
+        {yr:"2008", h:"In Extremis", p:"F. Latėno fortepijoninis trio. Lietuvos kultūros ministerija."},
+        {yr:"2012", h:"Meditatio", p:"J. S. Bacho, N. Paganinio, H. W. Ernsto, E. Ysaÿe ir M. Švėgždos von Bekkerio kūriniai. MSVB, Lietuva."}
+      ],
       teaching:[
         {yr:"Nuo 2003", open:true, h:"Lietuvos muzikos ir teatro akademija", p:"Docentas."},
         {yr:"Nuo 2016", open:true, h:"Johanneso Brahmso konservatorija, Hamburgas", p:"Docentas."},
+        {yr:"Nuo 2013", open:true, h:"Hamburgas", p:"Dėsto dviejose institucijose, vadovauja vaikų ir jaunimo ugdymui, įkūrė smuikininkų pažangos grupę „Leistungsgruppe Violine“."},
         {yr:"Nuo 2014", open:true, h:"Kasmetiniai meistriškumo kursai", p:"Tarptautinė Alfredo Schnittke’s akademija ir Johanneso Brahmso konservatorija Hamburge; Stasio Šimkaus konservatorija ir Vytauto Didžiojo universitetas Lietuvoje."},
-        {yr:"2005 – 2010", h:"Meistriškumo kursai užsienyje", p:"Pagal „Erasmus“ docentų mobilumo ir „Nordplus“ mainų programas: Lisabonos konservatorijos ir universitetai (2005), Kopenhaga (2005–2006), Kaljaris (2009), Oslas (2009). Pagal Fulbrighto programą: Bostono universitetas (2009), Longy muzikos mokykla ir Berklio muzikos koledžas Bostone (2010)."},
+        {yr:"2010 – 2012", h:"Klaipėda", p:"S. Šimkaus konservatorijoje — smuiko dalyko metodininkas; kviestinis dėstytojas Klaipėdos universitete. 2011–2012 m. — jungtiniai Klaipėdos ir Bostono universitetų meistriškumo kursai."},
+        {yr:"2009 – 2010", h:"Bostono universitetas", p:"Lektorius pagal Fulbrighto programą."},
+        {yr:"2005 – 2010", h:"Meistriškumo kursai užsienyje", p:"Pagal „Erasmus“ docentų mobilumo ir „Nordplus“ mainų programas: Lisabona (2005), Kopenhaga (2005–2006), Kaljaris (2009), Oslas (2009). Longy muzikos mokykla ir Berklio muzikos koledžas Bostone (2010)."},
+        {yr:"1999 – 2011", h:"Ankstesni meistriškumo kursai", p:"Druskininkų smuiko vasaros festivalis (1999, 2000); Kuhmo kamerinės muzikos festivalis Suomijoje (2001); Rostropovičiaus fondas ir LMTA (2003, 2004, 2005, 2011)."},
         {yr:"2002 – 2004", h:"Concours International de Kichompré, Prancūzija", p:"Žiuri narys."}
       ],
-      sections6:{n:"VI", t:"Užklausa"},
+      academy:{yr:"Nuo 2015", h:"Alternative Academy of Arts", p:"Tarptautinė mobili tarpdisciplininė meno akademija. Įkūrėjas."},
+      festival:{yr:"Nuo 2001", h:"Alternative Classical Music Festival", p:"Tarptautinis nekomercinis šviečiamasis festivalis. Vadovas."},
       form:{
         intro:"Studijos ir meistriškumo kursai arba koncerto pasiūlymas — parašykite keliais sakiniais, ir gausite atsakymą.",
-        purposes:[
-          {id:"studies", label:"Noriu mokytis"},
-          {id:"concert", label:"Siūlau koncertą"}
-        ],
-        name:"Vardas ir pavardė",
-        namePh:"Jūsų vardas",
-        email:"El. paštas",
-        emailPh:"vardas@pastas.lt",
-        place:"Miestas, šalis",
-        placePh:"nebūtina",
+        purposes:[{id:"studies", label:"Noriu mokytis"},{id:"concert", label:"Siūlau koncertą"}],
+        name:"Vardas ir pavardė", namePh:"Jūsų vardas",
+        email:"El. paštas", emailPh:"vardas@pastas.lt",
+        place:"Miestas, šalis", placePh:"nebūtina",
         message:"Žinutė",
-        messagePh:{
-          studies:"Instrumentas, dabartinis lygis, kur mokotės, ko norėtumėte siekti…",
-          concert:"Renginys, data, vieta, numatoma programa, sąlygos…"
-        },
+        messagePh:{studies:"Instrumentas, dabartinis lygis, kur mokotės, ko norėtumėte siekti…", concert:"Renginys, data, vieta, numatoma programa, sąlygos…"},
         subject:{studies:"Užklausa dėl studijų", concert:"Koncerto pasiūlymas"},
         submit:"Siųsti užklausą",
         note:"Atsakoma paprastai per kelias dienas.",
@@ -454,7 +493,6 @@
       footerCta:"Oficiali svetainė",
       colophon:"Turinys parengtas pagal atlikėjo biografiją.<br>Portretas — iš atlikėjo archyvo."
     },
-
     en:{
       htmlLang:"en",
       eyebrow:"Violinist",
@@ -472,16 +510,20 @@
         formation:{n:"II", t:"Training"},
         awards:{n:"III", t:"Competitions and honours"},
         stage:{n:"IV", t:"On stage"},
-        teaching:{n:"V", t:"Teaching"}
+        disco:{n:"V", t:"Discography"},
+        teaching:{n:"VI", t:"Teaching"},
+        enquiry:{n:"VII", t:"Enquiry"}
       },
       bio:[
         "Martynas Švėgžda von Bekkeris was born in 1967 in Vilnius, Lithuania. At the age of five he received his first violin lessons from his grandmother, <strong>E. Strazdaitė-Bekerienė</strong>, who had studied with L. Auer, J. Mařak, J. Feld and J. Thibaud. He gave his first recital at seven and appeared with the Lithuanian State Symphony Orchestra at eleven.",
-        "Since 1990 he has performed solo and chamber music recitals throughout Europe, the United States and Asia. In 1997 and again in 2009 he was named <strong>Honorary Cultural Attaché of the Republic of Lithuania</strong>. He has taught at the Lithuanian Academy of Music and Theatre since 2003, and at the Johannes Brahms Conservatory in Hamburg since 2016."
+        "In 1993 he gave the <strong>world premiere of Alfred Schnittke’s Violin Concerto No. 1</strong> at the Laeiszhalle in Hamburg, with the symphony orchestra of the Hochschule für Musik und Theater.",
+        "Since 1990 he has given solo and chamber music concerts in Scandinavia, the Baltic states, France, Germany, Portugal, Switzerland, Russia, the United States and Asia. In 1997 and again in 2009 he was named <strong>Honorary Cultural Attaché of the Republic of Lithuania</strong>."
       ],
       formation:[
-        {yr:"1973 – 1986", h:"M. K. Čiurlionis School of Art", p:"Vilnius, Lithuania."},
-        {yr:"1986 – 1989", h:"Lithuanian State Conservatoire", p:"Class of Prof. R. Katilius."},
-        {yr:"1989 – 1996", h:"Hochschule für Musik und Theater Hamburg", p:"Class of Prof. M. Lubotsky. Graduated with distinction; final examination given as a public concert.", tag:"With distinction"}
+        {yr:"1973 – 1986", h:"M. K. Čiurlionis School of Art", p:"Vilnius. Graduated with distinction.", tag:"With distinction"},
+        {yr:"1986 – 1989", h:"Lithuanian State Conservatoire", p:"Class of Prof. R. Katilius, Vilnius."},
+        {yr:"1989 – 1996", h:"Hochschule für Musik und Theater Hamburg", p:"Class of Prof. M. Lubotsky. Diploma and final concert examination with distinction.", tag:"With distinction"},
+        {yr:"From 1993", open:true, h:"His own violin class", p:"Previously assistant and tutor to his professors R. Katilius in Vilnius and M. Lubotsky in Hamburg."}
       ],
       mastersLabel:"Further studies with",
       masters:[
@@ -497,47 +539,77 @@
         {yr:"1983", h:"Jaroslav Kocian International Violin Competition", p:"Ústí nad Orlicí, Czech Republic.", tag:"4th prize"},
         {yr:"1984", h:"Lithuanian Young Violinists Competition", p:"", tag:"2nd prize"},
         {yr:"1990", h:"International Brahms Violin Competition", p:"", tag:"3rd prize"},
-        {yr:"1991 – 1995", h:"Coloris Piano Trio", p:"An active concert life in Lithuania and Germany. First prizes of the Elise Meyer Foundation; laureate of the second Hausmann Music Competition in Hamburg."},
-        {yr:"1997 · 2009", h:"Honorary Cultural Attaché of the Republic of Lithuania", p:"Awarded on two occasions."}
+        {yr:"1991 – 1995", h:"Coloris Piano Trio", p:"Concerts in Lithuania and Germany. First prizes of the Elise Meyer Foundation; laureate of the second Hausmann Music Competition in Hamburg."},
+        {yr:"1997 · 2009", h:"Honorary Cultural Attaché of the Republic of Lithuania", p:"Awarded on two occasions."},
+        {yr:"2013", h:"Honorary professorship", p:"Jakarta Conservatory (Yayasan Pendidikan Musik), Indonesia."}
+      ],
+      scholarLabel:"Scholarships and grants",
+      scholarships:[
+        {n:"M. K. Čiurlionis Scholarship, Vilnius", y:"1987"},
+        {n:"Rotary International, Hamburg", y:"1989–1991"},
+        {n:"Masefield, Hamburg", y:"1992"},
+        {n:"Oskar und Vera Ritter Stiftung, Hamburg", y:"1993"},
+        {n:"French Government Grant, Paris", y:"1996"},
+        {n:"Robert Schumann Foundation, Paris", y:"1997"},
+        {n:"Cité des Arts International, Paris", y:"1997–1999"},
+        {n:"Artist’s Grant of the Republic of Lithuania", y:"2005–2007"},
+        {n:"Fulbright Scholarship, USA", y:"2009–2010"},
+        {n:"Artist’s Grant of the Republic of Lithuania", y:"2012"}
       ],
       orchLabel:"Orchestras",
       orchestras:[
         "Berlin Symphony Orchestra","Georgian Symphony Orchestra","Lithuanian State Symphony Orchestra",
-        "Lithuanian Chamber Orchestra","Hamburg Symphony Orchestra","Gloriamus Philharmonic Orchestra, Jakarta"
+        "Lithuanian Philharmonic Orchestra","Lithuanian Chamber Orchestra","St. Christopher Chamber Orchestra, Vilnius",
+        "Klaipėda Chamber Orchestra","Mikkeli Chamber Orchestra, Finland","Hamburg Symphony Orchestra",
+        "Hamburg Philharmonic","Gloriamus Philharmonic Orchestra, Jakarta"
       ],
       partLabel:"Alongside",
       partners:["H.-D. Baum","K.-P. Seibel","G. Tshitshinadze","I. Uriasch","N. Lugansky","D. Kraus","S. Sondeckis","M. Lubotsky","D. McTier","G. Rivinius","Y. Mazurkevich"],
+      venueLabel:"Halls and festivals",
+      venues:[
+        "Tchaikovsky Concert Hall, Moscow","Schauspielhaus, Berlin","UNESCO, Paris",
+        "Lithuanian Philharmonic Hall, Vilnius","State Capella Concert Hall, St Petersburg",
+        "Boston University Concert Hall","Laeiszhalle, Hamburg","Kuhmo Festival, Finland",
+        "Les Arcs · La Baule · L’été Musicale, France","Modern Music Festival, Riga",
+        "Schleswig-Holstein Musik Festival","Appen Classics, Germany",
+        "Ostashkovo Music Summer Festival, Russia","Bornholm Music Festival, Denmark",
+        "Reikholt Festival, Iceland"
+      ],
       archLabel:"Concert recordings held by",
       archives:[
         {n:"LRT", y:"Lithuania"},{n:"SWR", y:"Germany"},{n:"NDR", y:"Germany"},
         {n:"Ostankino", y:"Russia"},{n:"Chalom Canal", y:"France"},{n:"ICTV", y:"Iceland"}
       ],
-      academy:{yr:"Since 2015", h:"Alternative Academy of Arts", p:"An international, mobile, interdisciplinary academy of the arts. Founder."},
+      disco:[
+        {yr:"1991", h:"D. Shostakovich · F. Mendelssohn-Bartholdy", p:"Piano trios. Polygram, Germany."},
+        {yr:"1997", h:"Works for solo violin by Lithuanian composers", p:"Dante, France."},
+        {yr:"1998", h:"Romantic Miniatures for violin and piano", p:"Japis, Iceland."},
+        {yr:"2005", h:"Le son et le parole", p:"Own cycle of miniatures for solo violin. MSVB, Lithuania."},
+        {yr:"2007", h:"Major Minor", p:"Double concertos for violin and viola by I. J. Pleyel and C. Stamitz. Lithuanian Radio."},
+        {yr:"2008", h:"In Extremis", p:"Piano trio by F. Latėnas. Ministry of Culture, Lithuania."},
+        {yr:"2012", h:"Meditatio", p:"Works by J. S. Bach, N. Paganini, H. W. Ernst, E. Ysaÿe and M. Švėgžda von Bekkeris. MSVB, Lithuania."}
+      ],
       teaching:[
         {yr:"Since 2003", open:true, h:"Lithuanian Academy of Music and Theatre", p:"Associate Professor."},
         {yr:"Since 2016", open:true, h:"Johannes Brahms Conservatory, Hamburg", p:"Associate Professor."},
+        {yr:"Since 2013", open:true, h:"Hamburg", p:"Teaches at two institutions, directs the training of children and young people, and founded the violin advancement group Leistungsgruppe Violine."},
         {yr:"Since 2014", open:true, h:"Annual masterclasses", p:"International Alfred Schnittke Academy and Johannes Brahms Conservatory in Hamburg; Stasys Šimkus Conservatory and Vytautas Magnus University in Lithuania."},
-        {yr:"2005 – 2010", h:"Masterclasses abroad", p:"Under the Erasmus teaching mobility and Nordplus exchange programmes: conservatoires and universities in Lisbon (2005), Copenhagen (2005–2006), Cagliari (2009), Oslo (2009). Under the Fulbright programme: Boston University (2009), Longy School of Music and Berklee College of Music in Boston (2010)."},
+        {yr:"2010 – 2012", h:"Klaipėda", p:"Principal violin methodologist at the S. Šimkus Conservatory; guest lecturer at Klaipėda University. Joint Klaipėda–Boston University masterclasses in 2011–2012."},
+        {yr:"2009 – 2010", h:"Boston University", p:"Lectureship under the Fulbright programme."},
+        {yr:"2005 – 2010", h:"Masterclasses abroad", p:"Under the Erasmus teaching mobility and Nordplus exchange programmes: Lisbon (2005), Copenhagen (2005–2006), Cagliari (2009), Oslo (2009). Longy School of Music and Berklee College of Music in Boston (2010)."},
+        {yr:"1999 – 2011", h:"Earlier masterclasses", p:"Druskininkai Violin Summer Festival (1999, 2000); Kuhmo Chamber Music Festival, Finland (2001); the Rostropovich Foundation and the Lithuanian Academy of Music and Theatre (2003, 2004, 2005, 2011)."},
         {yr:"2002 – 2004", h:"Concours International de Kichompré, France", p:"Jury member."}
       ],
-      sections6:{n:"VI", t:"Enquiry"},
+      academy:{yr:"Since 2015", h:"Alternative Academy of Arts", p:"An international, mobile, interdisciplinary academy of the arts. Founder."},
+      festival:{yr:"Since 2001", h:"Alternative Classical Music Festival", p:"An international non-profit educational festival. Director."},
       form:{
         intro:"Lessons and masterclasses, or an invitation to perform — write a few sentences and you will get a reply.",
-        purposes:[
-          {id:"studies", label:"I want to study"},
-          {id:"concert", label:"I am offering a concert"}
-        ],
-        name:"Name",
-        namePh:"Your name",
-        email:"Email",
-        emailPh:"name@example.com",
-        place:"City, country",
-        placePh:"optional",
+        purposes:[{id:"studies", label:"I want to study"},{id:"concert", label:"I am offering a concert"}],
+        name:"Name", namePh:"Your name",
+        email:"Email", emailPh:"name@example.com",
+        place:"City, country", placePh:"optional",
         message:"Message",
-        messagePh:{
-          studies:"Your instrument, current level, where you study, what you would like to work towards…",
-          concert:"Event, date, venue, intended programme, terms…"
-        },
+        messagePh:{studies:"Your instrument, current level, where you study, what you would like to work towards…", concert:"Event, date, venue, intended programme, terms…"},
         subject:{studies:"Enquiry about studying", concert:"Concert invitation"},
         submit:"Send enquiry",
         note:"Replies usually within a few days.",
@@ -553,7 +625,6 @@
       footerCta:"Official site",
       colophon:"Content compiled from the artist’s biography.<br>Portrait from the artist’s archive."
     },
-
     de:{
       htmlLang:"de",
       eyebrow:"Geiger",
@@ -571,16 +642,20 @@
         formation:{n:"II", t:"Ausbildung"},
         awards:{n:"III", t:"Wettbewerbe und Auszeichnungen"},
         stage:{n:"IV", t:"Auf der Bühne"},
-        teaching:{n:"V", t:"Lehre"}
+        disco:{n:"V", t:"Diskografie"},
+        teaching:{n:"VI", t:"Lehre"},
+        enquiry:{n:"VII", t:"Anfrage"}
       },
       bio:[
-        "Martynas Švėgžda von Bekkeris wurde 1967 in Vilnius, Litauen, geboren. Mit fünf Jahren erhielt er seinen ersten Geigenunterricht von seiner Großmutter <strong>E. Strazdaitė-Bekerienė</strong>, die bei L. Auer, J. Mařak, J. Feld und J. Thibaud studiert hatte. Mit sieben spielte er sein erstes Rezital, mit elf konzertierte er mit dem Litauischen Staatlichen Sinfonieorchester.",
-        "Seit 1990 gibt er Solo- und Kammermusikkonzerte in Europa, den USA und Asien. 1997 und erneut 2009 wurde ihm der Titel <strong>Ehrenkulturattaché der Republik Litauen</strong> verliehen. Seit 2003 lehrt er an der Litauischen Musik- und Theaterakademie, seit 2016 am Johannes-Brahms-Konservatorium Hamburg."
+        "Martynas Švėgžda von Bekkeris wurde 1967 in Vilnius, Litauen, geboren. Im Alter von fünf Jahren erhielt er seinen ersten Geigenunterricht bei seiner Großmutter <strong>E. Strazdaitė-Bekerienė</strong>, Schülerin von L. Auer, J. Mařak, J. Feld und J. Thibaud. Mit sieben Jahren gab er sein erstes Rezital und spielte bereits als Elfjähriger ein Konzert mit dem Litauischen Staatlichen Sinfonieorchester.",
+        "1993 spielte er die <strong>Uraufführung von Alfred Schnittkes Konzert für Violine Nr. 1</strong> in der Hamburger Laeiszhalle mit dem Symphonieorchester der Hochschule für Musik und Theater Hamburg.",
+        "Seit 1990 gibt er Solo- und Kammermusikkonzerte in Skandinavien, den baltischen Ländern, Frankreich, Deutschland, Portugal, der Schweiz, Russland, den USA und in Asien. 1997 und erneut 2009 wurde ihm der Titel <strong>Honorar-Kulturattaché der Republik Litauen</strong> verliehen."
       ],
       formation:[
-        {yr:"1973 – 1986", h:"M.-K.-Čiurlionis-Kunstgymnasium", p:"Vilnius, Litauen."},
-        {yr:"1986 – 1989", h:"Staatliches Konservatorium Litauens", p:"Klasse von Prof. R. Katilius."},
-        {yr:"1989 – 1996", h:"Hochschule für Musik und Theater Hamburg", p:"Klasse von Prof. M. Lubotsky. Abschluss mit Auszeichnung; die Abschlussprüfung wurde als Konzert abgelegt.", tag:"Mit Auszeichnung"}
+        {yr:"1973 – 1986", h:"M.-K.-Čiurlionis-Kunstgymnasium", p:"Vilnius. Abschluss mit Auszeichnung.", tag:"Mit Auszeichnung"},
+        {yr:"1986 – 1989", h:"Konservatorium der Litauischen SSR", p:"Klasse von Prof. R. Katilius, Vilnius."},
+        {yr:"1989 – 1996", h:"Hochschule für Musik und Theater Hamburg", p:"Klasse von Prof. M. Lubotsky. Diplom und Konzertexamen mit Auszeichnung.", tag:"Mit Auszeichnung"},
+        {yr:"Ab 1993", open:true, h:"Eigene Violinklasse", p:"Zuvor Vertretungs-Assistent und Tutor seiner Professoren R. Katilius in Vilnius und M. Lubotsky in Hamburg."}
       ],
       mastersLabel:"Weiterbildung bei",
       masters:[
@@ -594,49 +669,79 @@
       ],
       awards:[
         {yr:"1983", h:"Internationaler Jaroslav-Kocian-Violinwettbewerb", p:"Ústí nad Orlicí, Tschechien.", tag:"4. Preis"},
-        {yr:"1984", h:"Litauischer Wettbewerb junger Geiger", p:"", tag:"2. Preis"},
-        {yr:"1990", h:"Internationaler Brahms-Violinwettbewerb", p:"", tag:"3. Preis"},
-        {yr:"1991 – 1995", h:"Klaviertrio „Coloris“", p:"Rege Konzerttätigkeit in Litauen und Deutschland. Erste Preise der Elise-Meyer-Stiftung; Preisträger des zweiten Hausmann-Musikwettbewerbs in Hamburg."},
-        {yr:"1997 · 2009", h:"Ehrenkulturattaché der Republik Litauen", p:"Zweimal verliehen."}
+        {yr:"1984", h:"Litauischer Jugendwettbewerb", p:"", tag:"2. Preis"},
+        {yr:"1990", h:"Internationaler Brahms-Wettbewerb", p:"", tag:"3. Preis"},
+        {yr:"1991 – 1995", h:"Klaviertrio „Coloris“", p:"Auftritte in Deutschland und Litauen. Erste Preise der Elise-Meyer-Stiftung und des Zweiten Hausmann-Musikwettbewerbs in Hamburg."},
+        {yr:"1997 · 2009", h:"Honorar-Kulturattaché der Republik Litauen", p:"Zweimal verliehen."},
+        {yr:"2013", h:"Ehrenprofessur", p:"Konservatorium Jakarta (Yayasan Pendidikan Musik), Indonesien."}
+      ],
+      scholarLabel:"Stipendien",
+      scholarships:[
+        {n:"M.-K.-Čiurlionis-Stipendium, Vilnius", y:"1987"},
+        {n:"Rotary International, Hamburg", y:"1989–1991"},
+        {n:"Masefield, Hamburg", y:"1992"},
+        {n:"Oskar und Vera Ritter Stiftung, Hamburg", y:"1993"},
+        {n:"Stipendium der französischen Regierung, Paris", y:"1996"},
+        {n:"Robert-Schumann-Fondation, Paris", y:"1997"},
+        {n:"Cité des Arts International, Paris", y:"1997–1999"},
+        {n:"Künstlerstipendium der Republik Litauen", y:"2005–2007"},
+        {n:"Fulbright-Stipendium, USA", y:"2009–2010"},
+        {n:"Künstlerstipendium der Republik Litauen", y:"2012"}
       ],
       orchLabel:"Orchester",
       orchestras:[
-        "Berliner Sinfonie-Orchester","Georgisches Sinfonieorchester","Litauisches Staatliches Sinfonieorchester",
-        "Litauisches Kammerorchester","Hamburger Symphoniker","Gloriamus Philharmonisches Orchester, Jakarta"
+        "Berliner Symphonieorchester","Georgisches Symphonieorchester","Litauisches Staatssymphonieorchester",
+        "Litauisches Philharmonieorchester","Litauisches Kammerorchester","St.-Christopher-Kammerorchester, Vilnius",
+        "Klaipėda Kammerorchester","Mikkeli Kammerorchester, Finnland","Hamburger Symphoniker",
+        "Hamburger Philharmonie","Gloriamus Philharmonia, Jakarta"
       ],
       partLabel:"Gemeinsam mit",
       partners:["H.-D. Baum","K.-P. Seibel","G. Tshitshinadze","I. Uriasch","N. Lugansky","D. Kraus","S. Sondeckis","M. Lubotsky","D. McTier","G. Rivinius","Y. Mazurkevich"],
-      archLabel:"Konzertmitschnitte in den Archiven von",
+      venueLabel:"Konzertsäle und Festivals",
+      venues:[
+        "Tschaikowsky Concert Hall, Moskau","Schauspielhaus, Berlin","UNESCO, Paris",
+        "Litauische Philharmonie, Vilnius","Staatliche Capella, St. Petersburg",
+        "Boston University Concert Hall","Laeiszhalle, Hamburg","Kuhmo Festival, Finnland",
+        "Les Arcs · La Baule · L’été Musicale, Frankreich","Modern Music Festival, Riga",
+        "Schleswig-Holstein Musik Festival","Appen Classics, Deutschland",
+        "Ostaschkovo Music Summer Festival, Russland","Bornholm Music Festival, Dänemark",
+        "Reikholt Festival, Island"
+      ],
+      archLabel:"Rundfunk- und Fernsehaufnahmen archiviert bei",
       archives:[
         {n:"LRT", y:"Litauen"},{n:"SWR", y:"Deutschland"},{n:"NDR", y:"Deutschland"},
         {n:"Ostankino", y:"Russland"},{n:"Chalom Canal", y:"Frankreich"},{n:"ICTV", y:"Island"}
       ],
-      academy:{yr:"Seit 2015", h:"Alternative Academy of Arts", p:"Eine internationale, mobile, interdisziplinäre Kunstakademie. Gründer."},
+      disco:[
+        {yr:"1991", h:"D. Schostakowitsch · F. Mendelssohn-Bartholdy", p:"Klaviertrios. Polygram, Deutschland."},
+        {yr:"1997", h:"Werke für Violine solo von litauischen Komponisten", p:"Dante, Frankreich."},
+        {yr:"1998", h:"Romantische Miniaturen für Violine und Klavier", p:"Japis, Island."},
+        {yr:"2005", h:"Le son et le parole", p:"Eigener Miniaturenzyklus für Violine solo. MSVB, Litauen."},
+        {yr:"2007", h:"Major Minor", p:"Doppelkonzerte für Violine und Viola von I. J. Pleyel und C. Stamitz. Litauischer Rundfunk."},
+        {yr:"2008", h:"In Extremis", p:"Klaviertrio von F. Latėnas. Kultusministerium, Litauen."},
+        {yr:"2012", h:"Meditatio", p:"Stücke von J. S. Bach, N. Paganini, H. W. Ernst, E. Ysaÿe und M. Švėgžda von Bekkeris. MSVB, Litauen."}
+      ],
       teaching:[
         {yr:"Seit 2003", open:true, h:"Litauische Musik- und Theaterakademie", p:"Dozent."},
         {yr:"Seit 2016", open:true, h:"Johannes-Brahms-Konservatorium, Hamburg", p:"Dozent."},
+        {yr:"Seit 2013", open:true, h:"Hamburg", p:"Dozent an zwei Instituten. Er leitet die Ausbildung von Kindern und Jugendlichen und gründete eine Leistungsgruppe Violine."},
         {yr:"Seit 2014", open:true, h:"Jährliche Meisterkurse", p:"Internationale Alfred-Schnittke-Akademie und Johannes-Brahms-Konservatorium in Hamburg; Stasys-Šimkus-Konservatorium und Vytautas-Magnus-Universität in Litauen."},
-        {yr:"2005 – 2010", h:"Meisterkurse im Ausland", p:"Im Rahmen der Erasmus-Dozentenmobilität und des Nordplus-Austauschprogramms: Konservatorien und Universitäten in Lissabon (2005), Kopenhagen (2005–2006), Cagliari (2009), Oslo (2009). Im Rahmen des Fulbright-Programms: Boston University (2009), Longy School of Music und Berklee College of Music in Boston (2010)."},
+        {yr:"2010 – 2012", h:"Klaipėda", p:"Methodiker für das Hauptfach Violine am S.-Šimkus-Konservatorium; Gastdozentur an der Universität Klaipėda. 2011–2012 gemeinsame Meisterkurse der Universitäten Klaipėda und Boston."},
+        {yr:"2009 – 2010", h:"Boston University", p:"Lektorat im Rahmen des Fulbright-Programms."},
+        {yr:"2005 – 2010", h:"Meisterkurse im Ausland", p:"Im Rahmen der Erasmus-Dozentenmobilität und des Nordplus-Austauschprogramms: Lissabon (2005), Kopenhagen (2005–2006), Cagliari (2009), Oslo (2009). Longy School of Music und Berklee College of Music in Boston (2010)."},
+        {yr:"1999 – 2011", h:"Frühere Meisterkurse", p:"Violin Sommer Musik Festival Druskininkai (1999, 2000); Kammermusik-Festival Kuhmo, Finnland (2001); The Rostropovich Foundation und die Litauische Musik- und Theaterakademie (2003, 2004, 2005, 2011)."},
         {yr:"2002 – 2004", h:"Concours International de Kichompré, Frankreich", p:"Jurymitglied."}
       ],
-      sections6:{n:"VI", t:"Anfrage"},
+      academy:{yr:"Seit 2015", h:"Alternative Academy of Arts", p:"Eine internationale, mobile, interdisziplinäre Kunstakademie. Gründer."},
+      festival:{yr:"Seit 2001", h:"Alternative Classical Music Festival", p:"Ein internationales gemeinnütziges Bildungsfestival. Leiter."},
       form:{
         intro:"Unterricht und Meisterkurse oder eine Konzerteinladung — schreiben Sie ein paar Sätze, Sie erhalten eine Antwort.",
-        purposes:[
-          {id:"studies", label:"Ich möchte studieren"},
-          {id:"concert", label:"Ich biete ein Konzert an"}
-        ],
-        name:"Name",
-        namePh:"Ihr Name",
-        email:"E-Mail",
-        emailPh:"name@beispiel.de",
-        place:"Stadt, Land",
-        placePh:"optional",
+        purposes:[{id:"studies", label:"Ich möchte studieren"},{id:"concert", label:"Ich biete ein Konzert an"}],
+        name:"Name", namePh:"Ihr Name",
+        email:"E-Mail", emailPh:"name@beispiel.de",
+        place:"Stadt, Land", placePh:"optional",
         message:"Nachricht",
-        messagePh:{
-          studies:"Instrument, derzeitiges Niveau, wo Sie studieren, worauf Sie hinarbeiten möchten…",
-          concert:"Veranstaltung, Datum, Ort, geplantes Programm, Konditionen…"
-        },
+        messagePh:{studies:"Instrument, derzeitiges Niveau, wo Sie studieren, worauf Sie hinarbeiten möchten…", concert:"Veranstaltung, Datum, Ort, geplantes Programm, Konditionen…"},
         subject:{studies:"Anfrage zum Unterricht", concert:"Konzerteinladung"},
         submit:"Anfrage senden",
         note:"Antwort in der Regel innerhalb weniger Tage.",
@@ -651,6 +756,138 @@
       },
       footerCta:"Offizielle Website",
       colophon:"Inhalte nach der Biografie des Künstlers.<br>Porträt aus dem Archiv des Künstlers."
+    },
+    fr:{
+      htmlLang:"fr",
+      eyebrow:"Violoniste",
+      given:"Martynas Švėgžda",
+      sur:"von Bekkeris",
+      lead:"Du premier récital à sept ans aux salles de concert d’Europe, des États-Unis et d’Asie.",
+      portraitCap:"Portrait",
+      roles:[
+        "Maître de conférences, Académie lituanienne de musique et de théâtre",
+        "Maître de conférences, Conservatoire Johannes Brahms de Hambourg",
+        "Fondateur de l’Alternative Academy of Arts"
+      ],
+      sections:{
+        bio:{n:"I", t:"Biographie"},
+        formation:{n:"II", t:"Formation"},
+        awards:{n:"III", t:"Concours et distinctions"},
+        stage:{n:"IV", t:"Sur scène"},
+        disco:{n:"V", t:"Discographie"},
+        teaching:{n:"VI", t:"Enseignement"},
+        enquiry:{n:"VII", t:"Contact"}
+      },
+      bio:[
+        "Martynas Švėgžda von Bekkeris est né en 1967 à Vilnius, en Lituanie. À cinq ans, il reçoit ses premières leçons de violon de sa grand-mère <strong>E. Strazdaitė-Bekerienė</strong>, élève de L. Auer, J. Mařak, J. Feld et J. Thibaud. Il donne son premier récital à sept ans et joue avec l’Orchestre symphonique national de Lituanie à onze ans.",
+        "En 1993, il crée en <strong>première mondiale le Concerto pour violon nº 1 d’Alfred Schnittke</strong> à la Laeiszhalle de Hambourg, avec l’orchestre symphonique de la Hochschule für Musik und Theater.",
+        "Depuis 1990, il se produit en récital et en musique de chambre en Scandinavie, dans les pays baltes, en France, en Allemagne, au Portugal, en Suisse, en Russie, aux États-Unis et en Asie. En 1997, puis de nouveau en 2009, le titre d’<strong>attaché culturel honoraire de la République de Lituanie</strong> lui a été décerné."
+      ],
+      formation:[
+        {yr:"1973 – 1986", h:"Lycée d’art M. K. Čiurlionis", p:"Vilnius. Diplômé avec mention.", tag:"Avec mention"},
+        {yr:"1986 – 1989", h:"Conservatoire d’État de Lituanie", p:"Classe du prof. R. Katilius, Vilnius."},
+        {yr:"1989 – 1996", h:"Hochschule für Musik und Theater de Hambourg", p:"Classe du prof. M. Lubotsky. Diplôme et examen final de concert avec mention.", tag:"Avec mention"},
+        {yr:"Depuis 1993", open:true, h:"Sa propre classe de violon", p:"Auparavant assistant et tuteur de ses professeurs R. Katilius à Vilnius et M. Lubotsky à Hambourg."}
+      ],
+      mastersLabel:"Perfectionnement auprès de",
+      masters:[
+        {n:"Eberhard Feltz", y:"1983"},
+        {n:"Igor Bezrodny", y:"1986"},
+        {n:"Igor Oistrach", y:"1988"},
+        {n:"Volker Banfield", y:"1990–1992"},
+        {n:"Ralf Gothoni", y:"1990–1992"},
+        {n:"Detlev Kraus", y:"1990–1992"},
+        {n:"Boris Garlitsky", y:"1996"}
+      ],
+      awards:[
+        {yr:"1983", h:"Concours international de violon Jaroslav Kocian", p:"Ústí nad Orlicí, Tchéquie.", tag:"4ᵉ prix"},
+        {yr:"1984", h:"Concours lituanien des jeunes violonistes", p:"", tag:"2ᵉ prix"},
+        {yr:"1990", h:"Concours international Brahms", p:"", tag:"3ᵉ prix"},
+        {yr:"1991 – 1995", h:"Trio avec piano « Coloris »", p:"Concerts en Lituanie et en Allemagne. Premiers prix de la Fondation Elise Meyer ; lauréat du deuxième Concours de musique Hausmann à Hambourg."},
+        {yr:"1997 · 2009", h:"Attaché culturel honoraire de la République de Lituanie", p:"Titre décerné à deux reprises."},
+        {yr:"2013", h:"Professeur honoraire", p:"Conservatoire de Jakarta (Yayasan Pendidikan Musik), Indonésie."}
+      ],
+      scholarLabel:"Bourses",
+      scholarships:[
+        {n:"Bourse M. K. Čiurlionis, Vilnius", y:"1987"},
+        {n:"Rotary International, Hambourg", y:"1989–1991"},
+        {n:"Masefield, Hambourg", y:"1992"},
+        {n:"Fondation Oskar und Vera Ritter, Hambourg", y:"1993"},
+        {n:"Bourse du gouvernement français, Paris", y:"1996"},
+        {n:"Fondation Robert Schumann, Paris", y:"1997"},
+        {n:"Cité internationale des arts, Paris", y:"1997–1999"},
+        {n:"Bourse d’artiste de la République de Lituanie", y:"2005–2007"},
+        {n:"Bourse Fulbright, États-Unis", y:"2009–2010"},
+        {n:"Bourse d’artiste de la République de Lituanie", y:"2012"}
+      ],
+      orchLabel:"Orchestres",
+      orchestras:[
+        "Orchestre symphonique de Berlin","Orchestre symphonique de Géorgie","Orchestre symphonique national de Lituanie",
+        "Orchestre philharmonique de Lituanie","Orchestre de chambre de Lituanie","Orchestre de chambre Saint-Christophe, Vilnius",
+        "Orchestre de chambre de Klaipėda","Orchestre de chambre de Mikkeli, Finlande","Orchestre symphonique de Hambourg",
+        "Philharmonie de Hambourg","Orchestre philharmonique Gloriamus, Jakarta"
+      ],
+      partLabel:"Aux côtés de",
+      partners:["H.-D. Baum","K.-P. Seibel","G. Tshitshinadze","I. Uriasch","N. Lugansky","D. Kraus","S. Sondeckis","M. Lubotsky","D. McTier","G. Rivinius","Y. Mazurkevich"],
+      venueLabel:"Salles et festivals",
+      venues:[
+        "Salle Tchaïkovski, Moscou","Schauspielhaus, Berlin","UNESCO, Paris",
+        "Salle de la Philharmonie de Lituanie, Vilnius","Capella d’État, Saint-Pétersbourg",
+        "Boston University Concert Hall","Laeiszhalle, Hambourg","Festival de Kuhmo, Finlande",
+        "Les Arcs · La Baule · L’été Musicale, France","Modern Music Festival, Riga",
+        "Schleswig-Holstein Musik Festival","Appen Classics, Allemagne",
+        "Festival d’été d’Ostachkov, Russie","Festival de musique de Bornholm, Danemark",
+        "Festival de Reikholt, Islande"
+      ],
+      archLabel:"Enregistrements conservés par",
+      archives:[
+        {n:"LRT", y:"Lituanie"},{n:"SWR", y:"Allemagne"},{n:"NDR", y:"Allemagne"},
+        {n:"Ostankino", y:"Russie"},{n:"Chalom Canal", y:"France"},{n:"ICTV", y:"Islande"}
+      ],
+      disco:[
+        {yr:"1991", h:"D. Chostakovitch · F. Mendelssohn-Bartholdy", p:"Trios avec piano. Polygram, Allemagne."},
+        {yr:"1997", h:"Œuvres pour violon seul de compositeurs lituaniens", p:"Dante, France."},
+        {yr:"1998", h:"Miniatures romantiques pour violon et piano", p:"Japis, Islande."},
+        {yr:"2005", h:"Le son et le parole", p:"Cycle de miniatures pour violon seul, de sa composition. MSVB, Lituanie."},
+        {yr:"2007", h:"Major Minor", p:"Doubles concertos pour violon et alto de I. J. Pleyel et C. Stamitz. Radio lituanienne."},
+        {yr:"2008", h:"In Extremis", p:"Trio avec piano de F. Latėnas. Ministère de la Culture, Lituanie."},
+        {yr:"2012", h:"Meditatio", p:"Œuvres de J. S. Bach, N. Paganini, H. W. Ernst, E. Ysaÿe et M. Švėgžda von Bekkeris. MSVB, Lituanie."}
+      ],
+      teaching:[
+        {yr:"Depuis 2003", open:true, h:"Académie lituanienne de musique et de théâtre", p:"Maître de conférences."},
+        {yr:"Depuis 2016", open:true, h:"Conservatoire Johannes Brahms, Hambourg", p:"Maître de conférences."},
+        {yr:"Depuis 2013", open:true, h:"Hambourg", p:"Enseigne dans deux établissements, dirige la formation des enfants et des jeunes et a fondé le groupe de perfectionnement Leistungsgruppe Violine."},
+        {yr:"Depuis 2014", open:true, h:"Masterclasses annuelles", p:"Académie internationale Alfred Schnittke et Conservatoire Johannes Brahms à Hambourg ; Conservatoire Stasys Šimkus et Université Vytautas Magnus en Lituanie."},
+        {yr:"2010 – 2012", h:"Klaipėda", p:"Responsable pédagogique du violon au Conservatoire S. Šimkus ; professeur invité à l’Université de Klaipėda. Masterclasses conjointes Klaipėda–Boston en 2011–2012."},
+        {yr:"2009 – 2010", h:"Boston University", p:"Chargé de cours dans le cadre du programme Fulbright."},
+        {yr:"2005 – 2010", h:"Masterclasses à l’étranger", p:"Dans le cadre des programmes de mobilité Erasmus et d’échange Nordplus : Lisbonne (2005), Copenhague (2005–2006), Cagliari (2009), Oslo (2009). Longy School of Music et Berklee College of Music à Boston (2010)."},
+        {yr:"1999 – 2011", h:"Masterclasses antérieures", p:"Festival d’été du violon de Druskininkai (1999, 2000) ; Festival de musique de chambre de Kuhmo, Finlande (2001) ; Fondation Rostropovitch et Académie lituanienne de musique et de théâtre (2003, 2004, 2005, 2011)."},
+        {yr:"2002 – 2004", h:"Concours International de Kichompré, France", p:"Membre du jury."}
+      ],
+      academy:{yr:"Depuis 2015", h:"Alternative Academy of Arts", p:"Une académie des arts internationale, mobile et interdisciplinaire. Fondateur."},
+      festival:{yr:"Depuis 2001", h:"Alternative Classical Music Festival", p:"Festival éducatif international à but non lucratif. Directeur."},
+      form:{
+        intro:"Cours et masterclasses, ou une invitation à jouer — écrivez quelques phrases, vous recevrez une réponse.",
+        purposes:[{id:"studies", label:"Je souhaite étudier"},{id:"concert", label:"Je propose un concert"}],
+        name:"Nom", namePh:"Votre nom",
+        email:"E-mail", emailPh:"nom@exemple.fr",
+        place:"Ville, pays", placePh:"facultatif",
+        message:"Message",
+        messagePh:{studies:"Votre instrument, votre niveau actuel, où vous étudiez, ce que vous souhaitez travailler…", concert:"Événement, date, lieu, programme envisagé, conditions…"},
+        subject:{studies:"Demande concernant les études", concert:"Invitation à un concert"},
+        submit:"Envoyer la demande",
+        note:"Réponse généralement sous quelques jours.",
+        errName:"Veuillez indiquer votre nom.",
+        errEmail:"Veuillez indiquer une adresse e-mail valide.",
+        errMessage:"Merci d’écrire quelques phrases — cela facilite la réponse.",
+        sending:"Envoi…",
+        okMail:"Votre logiciel de messagerie s’est ouvert avec le message prêt. La demande ne sera envoyée qu’une fois cet e-mail expédié.",
+        okPost:"Merci — votre demande a été envoyée. Vous recevrez une réponse par e-mail.",
+        failPost:"L’envoi a échoué. Veuillez réessayer ou écrire directement par e-mail.",
+        setup:"Le formulaire est prêt, mais aucune adresse de destinataire n’est encore définie. Ajoutez-la à CONTACT_EMAIL dans body.part.html puis lancez python3 build.py"
+      },
+      footerCta:"Site officiel",
+      colophon:"Contenu établi d’après la biographie de l’artiste.<br>Portrait provenant des archives de l’artiste."
     }
   };
 
@@ -693,7 +930,7 @@
              (i===0 ? "true" : "false") + '">' + esc(o.label) + '</button>';
     }).join("");
 
-    return '<section id="enquiry">' + sectionHead(d.sections6) +
+    return '<section id="enquiry">' + sectionHead(d.sections.enquiry) +
       '<p class="form-intro">' + esc(f.intro) + '</p>' +
       '<div class="purpose" role="group" id="purpose">' + opts + '</div>' +
       '<form class="fields" id="enquiry-form" novalidate>' +
@@ -860,22 +1097,33 @@
 
     /* III. awards */
     html += '<section>' + sectionHead(d.sections.awards) +
-      '<div class="rail">' + d.awards.map(entry).join("") + '</div></section>';
+      '<div class="rail">' + d.awards.map(entry).join("") + '</div>' +
+      '<div class="block"><p class="label">' + esc(d.scholarLabel) + '</p>' + nameList(d.scholarships) + '</div>' +
+      '</section>';
 
     /* IV. stage */
     html += '<section>' + sectionHead(d.sections.stage) +
       '<div class="block"><p class="label">' + esc(d.orchLabel) + '</p>' + nameList(d.orchestras) + '</div>' +
       '<div class="block"><p class="label">' + esc(d.partLabel) + '</p>' + nameList(d.partners) + '</div>' +
+      '<div class="block"><p class="label">' + esc(d.venueLabel) + '</p>' + nameList(d.venues) + '</div>' +
       '<div class="block"><p class="label">' + esc(d.archLabel) + '</p>' + nameList(d.archives) + '</div>' +
       '</section>';
 
-    /* V. teaching */
+    /* V. discography */
+    html += '<section>' + sectionHead(d.sections.disco) +
+      '<div class="rail">' + d.disco.map(entry).join("") + '</div></section>';
+
+    /* VI. teaching */
     html += '<section>' + sectionHead(d.sections.teaching) +
       '<div class="rail">' + d.teaching.map(entry).join("") + '</div>' +
-      '<div class="block featured">' +
-        '<span class="yr">' + esc(d.academy.yr) + '</span>' +
-        '<h3>' + esc(d.academy.h) + '</h3>' +
-        '<p>' + esc(d.academy.p) + '</p>' +
+      '<div class="block featured-pair">' +
+        [d.academy, d.festival].map(function(f){
+          return '<div class="featured">' +
+            '<span class="yr">' + esc(f.yr) + '</span>' +
+            '<h3>' + esc(f.h) + '</h3>' +
+            '<p>' + esc(f.p) + '</p>' +
+          '</div>';
+        }).join("") +
       '</div></section>';
 
     /* VI. enquiry */
