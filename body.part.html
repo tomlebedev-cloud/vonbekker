@@ -246,6 +246,13 @@
     display:inline-block;
   }
   .site-link:hover{color:var(--varnish);border-color:var(--varnish)}
+  .footer-mail{margin:1.35rem 0 0;font-size:0.95rem}
+  .footer-mail a{
+    color:var(--muted);text-decoration:none;
+    border-bottom:1px solid var(--rule);padding-bottom:0.08em;
+    transition:color .2s ease,border-color .2s ease;
+  }
+  .footer-mail a:hover{color:var(--varnish);border-color:var(--varnish-dim)}
   .colophon{
     margin-top:2.25rem;font-family:var(--f-data);font-size:0.66rem;
     letter-spacing:0.06em;color:var(--faint);line-height:1.8;
@@ -338,7 +345,7 @@
                     mailto: — atsidaro lankytojo pašto programa su jau
                     suformuotu laišku.
      ------------------------------------------------------------------ */
-  var CONTACT_EMAIL = "";
+  var CONTACT_EMAIL = "svegzda.martynas@gmail.com";
   var FORM_ENDPOINT = "";
 
   /* Nustatymo priminimas skirtas kūrėjui, ne lankytojams: rodomas tik atidarius
@@ -880,6 +887,7 @@
     /* footer */
     html += '<footer>' +
       '<a class="site-link" href="https://www.vonbekker.com" target="_blank" rel="noopener noreferrer">vonbekker.com</a>' +
+      (CONTACT_EMAIL ? '<p class="footer-mail"><a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a></p>' : '') +
       '<p class="colophon">' + esc(d.footerCta) + '<br><br>' + d.colophon + '</p>' +
       '</footer>';
 

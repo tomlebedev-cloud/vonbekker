@@ -35,7 +35,7 @@ Yra paslėptas laukas prieš robotus ir laukų tikrinimas visomis trimis kalbomi
 Prieš publikuojant reikia nustatyti gavėją — `body.part.html` viršuje:
 
 ```js
-var CONTACT_EMAIL = "";   // gavėjo el. paštas
+var CONTACT_EMAIL = "svegzda.martynas@gmail.com";
 var FORM_ENDPOINT = "";   // nebūtina, žr. žemiau
 ```
 
@@ -67,7 +67,8 @@ Norint prijungti `vonbekker.com` — pridėti `CNAME` failą su domenu ir nukrei
   Šis pavadinimas neaptinkamas jokiame šaltinyje internete, tad rašyba nepatikrinta;
   svetainėje kol kas paliktas CV variantas. Šaltinyje pažymėta `TODO` (3 vietos — LT, EN, DE).
 - ~~„Jaroslav Kozian“~~ → **Jaroslav Kocian** (Ústí nad Orlicí, Čekija) — ištaisyta, pridėtas miestas.
-- **Nustatyti formos gavėją** — žr. „Užklausos forma“ aukščiau. Kol kas nenustatyta.
+- **Formos servisas.** Šiuo metu veikia `mailto:`. Užsivedus Formspree ir įrašius adresą į
+  `FORM_ENDPOINT`, užklausos ateitų tiesiai, be lankytojo pašto programos.
 - **Atnaujinti CV** — šaltinis iš 2018 m.
 - **Prancūzijos laikotarpis.** 2013 m. interviu Martynas mini šešerius metus Paryžiuje ir
   Prancūzijoje bei grįžimą į Lietuvą 2003 m. — CV to nėra. Verta įtraukti, kai bus patvirtinta.
