@@ -250,6 +250,62 @@
     margin-top:2.25rem;font-family:var(--f-data);font-size:0.66rem;
     letter-spacing:0.06em;color:var(--faint);line-height:1.8;
   }
+
+  /* ---- enquiry form ---- */
+  .form-intro{max-width:52ch;color:var(--muted);margin:0 0 1.75rem}
+
+  .purpose{display:flex;flex-wrap:wrap;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:0 0 1.75rem;width:fit-content;max-width:100%}
+  .purpose button{
+    appearance:none;border:0;cursor:pointer;background:var(--ground);color:var(--muted);
+    font-family:var(--f-body);font-size:0.88rem;padding:0.6rem 1.1rem;
+    transition:color .18s ease,background .18s ease;
+  }
+  .purpose button:hover{color:var(--paper)}
+  .purpose button[aria-pressed="true"]{background:var(--varnish);color:#17130E;font-weight:500}
+
+  .fields{display:grid;gap:1.15rem;max-width:38rem}
+  @media (min-width:640px){ .fields .row2{display:grid;grid-template-columns:1fr 1fr;gap:1.15rem} }
+  .field{display:grid;gap:0.4rem;min-width:0}
+  .field label{
+    font-family:var(--f-data);font-size:0.64rem;font-weight:500;
+    letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);
+  }
+  .field input,.field textarea{
+    font-family:var(--f-body);font-size:0.95rem;color:var(--paper);
+    background:var(--ground-2);border:1px solid var(--rule);border-radius:0;
+    padding:0.68rem 0.8rem;width:100%;
+    transition:border-color .18s ease;
+  }
+  .field textarea{min-height:8.5rem;resize:vertical;line-height:1.6}
+  .field input:hover,.field textarea:hover{border-color:#3C3630}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--varnish)}
+  .field input::placeholder,.field textarea::placeholder{color:#5D554E}
+  .field[data-invalid="true"] input,.field[data-invalid="true"] textarea{border-color:#B4553C}
+  .field .err{font-size:0.8rem;color:#D97A5E;min-height:0}
+  .field .err:empty{display:none}
+
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+  .form-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-top:0.5rem}
+  .submit{
+    appearance:none;cursor:pointer;
+    background:var(--varnish);color:#17130E;border:1px solid var(--varnish);
+    font-family:var(--f-body);font-weight:600;font-size:0.9rem;
+    letter-spacing:0.01em;padding:0.72rem 1.5rem;
+    transition:background .18s ease,border-color .18s ease;
+  }
+  .submit:hover{background:#D89B52;border-color:#D89B52}
+  .form-note{font-size:0.82rem;color:var(--muted);max-width:34ch}
+  .form-status{
+    margin-top:1.25rem;padding:0.85rem 1rem;max-width:38rem;
+    border-left:2px solid var(--varnish);background:var(--surface);
+    font-size:0.9rem;color:var(--paper);
+  }
+  .form-status[hidden]{display:none}
+  .setup-note{
+    margin-top:1rem;font-family:var(--f-data);font-size:0.68rem;
+    letter-spacing:0.04em;color:var(--varnish);max-width:44ch;line-height:1.7;
+  }
 </style>
 
 <header class="topbar">
@@ -270,6 +326,21 @@
   "use strict";
 
   var PORTRAIT = "__PORTRAIT__";
+
+  /* ------------------------------------------------------------------
+     KONFIGŪRACIJA — užpildyti prieš publikuojant.
+
+     CONTACT_EMAIL  Gavėjo el. paštas. Kol tuščias, forma veikia, bet
+                    siųsti negali ir po mygtuku rodoma nustatymo žinutė.
+     FORM_ENDPOINT  Nebūtina. Formos serviso (pvz. Formspree) adresas —
+                    tuomet užklausos ateina tiesiai į pašto dėžutę ir
+                    kaupiamos serviso skydelyje. Kol tuščias, naudojamas
+                    mailto: — atsidaro lankytojo pašto programa su jau
+                    suformuotu laišku.
+     ------------------------------------------------------------------ */
+  var CONTACT_EMAIL = "";
+  var FORM_ENDPOINT = "";
+
 
   var C = {
     lt:{
@@ -338,6 +409,36 @@
       /* TODO: patikslinti originalią prancūzišką konkurso rašybą (CV: „Kišomprė“). */
         {yr:"2002 – 2004", h:"Tarptautinis Kišomprė konkursas, Prancūzija", p:"Žiuri narys."}
       ],
+      sections6:{n:"VI", t:"Užklausa"},
+      form:{
+        intro:"Studijos ir meistriškumo kursai arba koncerto pasiūlymas — parašykite keliais sakiniais, ir gausite atsakymą.",
+        purposes:[
+          {id:"studies", label:"Noriu mokytis"},
+          {id:"concert", label:"Siūlau koncertą"}
+        ],
+        name:"Vardas ir pavardė",
+        namePh:"Jūsų vardas",
+        email:"El. paštas",
+        emailPh:"vardas@pastas.lt",
+        place:"Miestas, šalis",
+        placePh:"nebūtina",
+        message:"Žinutė",
+        messagePh:{
+          studies:"Instrumentas, dabartinis lygis, kur mokotės, ko norėtumėte siekti…",
+          concert:"Renginys, data, vieta, numatoma programa, sąlygos…"
+        },
+        subject:{studies:"Užklausa dėl studijų", concert:"Koncerto pasiūlymas"},
+        submit:"Siųsti užklausą",
+        note:"Atsakoma paprastai per kelias dienas.",
+        errName:"Įrašykite savo vardą.",
+        errEmail:"Įrašykite galiojantį el. pašto adresą.",
+        errMessage:"Parašykite bent kelis sakinius — taip lengviau atsakyti.",
+        sending:"Siunčiama…",
+        okMail:"Atidaryta jūsų pašto programa su paruoštu laišku. Užklausa pasieks tik jį išsiuntus.",
+        okPost:"Ačiū — užklausa išsiųsta. Atsakymo laukite el. paštu.",
+        failPost:"Nepavyko išsiųsti. Pabandykite dar kartą arba parašykite tiesiai el. paštu.",
+        setup:"Forma paruošta, bet gavėjo el. paštas dar nenurodytas. Įrašykite jį prie CONTACT_EMAIL faile body.part.html ir paleiskite python3 build.py"
+      },
       footerCta:"Oficiali svetainė",
       colophon:"Turinys parengtas pagal atlikėjo biografiją.<br>Portretas — iš atlikėjo archyvo."
     },
@@ -408,6 +509,36 @@
       /* TODO: patikslinti originalią prancūzišką konkurso rašybą (CV: „Kišomprė“). */
         {yr:"2002 – 2004", h:"Kišomprė International Competition, France", p:"Jury member."}
       ],
+      sections6:{n:"VI", t:"Enquiry"},
+      form:{
+        intro:"Lessons and masterclasses, or an invitation to perform — write a few sentences and you will get a reply.",
+        purposes:[
+          {id:"studies", label:"I want to study"},
+          {id:"concert", label:"I am offering a concert"}
+        ],
+        name:"Name",
+        namePh:"Your name",
+        email:"Email",
+        emailPh:"name@example.com",
+        place:"City, country",
+        placePh:"optional",
+        message:"Message",
+        messagePh:{
+          studies:"Your instrument, current level, where you study, what you would like to work towards…",
+          concert:"Event, date, venue, intended programme, terms…"
+        },
+        subject:{studies:"Enquiry about studying", concert:"Concert invitation"},
+        submit:"Send enquiry",
+        note:"Replies usually within a few days.",
+        errName:"Please enter your name.",
+        errEmail:"Please enter a valid email address.",
+        errMessage:"Please write a few sentences — it makes a reply much easier.",
+        sending:"Sending…",
+        okMail:"Your mail application has opened with the message ready. The enquiry is sent once you send that email.",
+        okPost:"Thank you — your enquiry has been sent. You will get a reply by email.",
+        failPost:"The enquiry could not be sent. Please try again, or write directly by email.",
+        setup:"The form is ready, but no recipient address is set yet. Add it to CONTACT_EMAIL in body.part.html and run python3 build.py"
+      },
       footerCta:"Official site",
       colophon:"Content compiled from the artist’s biography.<br>Portrait from the artist’s archive."
     },
@@ -478,6 +609,36 @@
       /* TODO: patikslinti originalią prancūzišką konkurso rašybą (CV: „Kišomprė“). */
         {yr:"2002 – 2004", h:"Internationaler Kišomprė-Wettbewerb, Frankreich", p:"Jurymitglied."}
       ],
+      sections6:{n:"VI", t:"Anfrage"},
+      form:{
+        intro:"Unterricht und Meisterkurse oder eine Konzerteinladung — schreiben Sie ein paar Sätze, Sie erhalten eine Antwort.",
+        purposes:[
+          {id:"studies", label:"Ich möchte studieren"},
+          {id:"concert", label:"Ich biete ein Konzert an"}
+        ],
+        name:"Name",
+        namePh:"Ihr Name",
+        email:"E-Mail",
+        emailPh:"name@beispiel.de",
+        place:"Stadt, Land",
+        placePh:"optional",
+        message:"Nachricht",
+        messagePh:{
+          studies:"Instrument, derzeitiges Niveau, wo Sie studieren, worauf Sie hinarbeiten möchten…",
+          concert:"Veranstaltung, Datum, Ort, geplantes Programm, Konditionen…"
+        },
+        subject:{studies:"Anfrage zum Unterricht", concert:"Konzerteinladung"},
+        submit:"Anfrage senden",
+        note:"Antwort in der Regel innerhalb weniger Tage.",
+        errName:"Bitte geben Sie Ihren Namen ein.",
+        errEmail:"Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+        errMessage:"Bitte schreiben Sie ein paar Sätze — das erleichtert die Antwort.",
+        sending:"Wird gesendet…",
+        okMail:"Ihr E-Mail-Programm wurde mit der fertigen Nachricht geöffnet. Die Anfrage geht erst mit dem Absenden dieser E-Mail ein.",
+        okPost:"Vielen Dank — Ihre Anfrage wurde gesendet. Die Antwort erhalten Sie per E-Mail.",
+        failPost:"Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie direkt per E-Mail.",
+        setup:"Das Formular ist fertig, es fehlt nur die Empfängeradresse. Tragen Sie sie unter CONTACT_EMAIL in body.part.html ein und führen Sie python3 build.py aus"
+      },
       footerCta:"Offizielle Website",
       colophon:"Inhalte nach der Biografie des Künstlers.<br>Porträt aus dem Archiv des Künstlers."
     }
@@ -512,6 +673,144 @@
 
   function sectionHead(s){
     return '<div class="sec-head"><span class="n">' + esc(s.n) + '</span><h2>' + esc(s.t) + '</h2></div>';
+  }
+
+
+  function formSection(d){
+    var f = d.form;
+    var opts = f.purposes.map(function(o,i){
+      return '<button type="button" data-purpose="' + o.id + '" aria-pressed="' +
+             (i===0 ? "true" : "false") + '">' + esc(o.label) + '</button>';
+    }).join("");
+
+    return '<section id="enquiry">' + sectionHead(d.sections6) +
+      '<p class="form-intro">' + esc(f.intro) + '</p>' +
+      '<div class="purpose" role="group" id="purpose">' + opts + '</div>' +
+      '<form class="fields" id="enquiry-form" novalidate>' +
+        '<div class="row2">' +
+          '<div class="field" data-for="name">' +
+            '<label for="q-name">' + esc(f.name) + '</label>' +
+            '<input id="q-name" name="name" type="text" autocomplete="name" placeholder="' + esc(f.namePh) + '">' +
+            '<p class="err"></p>' +
+          '</div>' +
+          '<div class="field" data-for="email">' +
+            '<label for="q-email">' + esc(f.email) + '</label>' +
+            '<input id="q-email" name="email" type="email" autocomplete="email" placeholder="' + esc(f.emailPh) + '">' +
+            '<p class="err"></p>' +
+          '</div>' +
+        '</div>' +
+        '<div class="field" data-for="place">' +
+          '<label for="q-place">' + esc(f.place) + '</label>' +
+          '<input id="q-place" name="place" type="text" placeholder="' + esc(f.placePh) + '">' +
+        '</div>' +
+        '<div class="field" data-for="message">' +
+          '<label for="q-message">' + esc(f.message) + '</label>' +
+          '<textarea id="q-message" name="message" placeholder="' + esc(f.messagePh.studies) + '"></textarea>' +
+          '<p class="err"></p>' +
+        '</div>' +
+        '<div class="hp" aria-hidden="true">' +
+          '<label for="q-website">Website</label>' +
+          '<input id="q-website" name="website" type="text" tabindex="-1" autocomplete="off">' +
+        '</div>' +
+        '<div class="form-actions">' +
+          '<button class="submit" type="submit">' + esc(f.submit) + '</button>' +
+          '<span class="form-note">' + esc(f.note) + '</span>' +
+        '</div>' +
+      '</form>' +
+      '<p class="form-status" id="form-status" hidden></p>' +
+      (CONTACT_EMAIL || FORM_ENDPOINT ? '' : '<p class="setup-note">' + esc(f.setup) + '</p>') +
+      '</section>';
+  }
+
+  function wireForm(d){
+    var f = d.form;
+    var form = document.getElementById("enquiry-form");
+    if (!form) return;
+
+    var purpose = f.purposes[0].id;
+    var msg = document.getElementById("q-message");
+    var status = document.getElementById("form-status");
+
+    document.getElementById("purpose").addEventListener("click", function(ev){
+      var b = ev.target.closest("button[data-purpose]");
+      if (!b) return;
+      purpose = b.getAttribute("data-purpose");
+      var all = this.querySelectorAll("button[data-purpose]");
+      for (var i = 0; i < all.length; i++){
+        all[i].setAttribute("aria-pressed", all[i] === b ? "true" : "false");
+      }
+      msg.placeholder = f.messagePh[purpose] || "";
+    });
+
+    function setErr(name, text){
+      var wrap = form.querySelector('.field[data-for="' + name + '"]');
+      if (!wrap) return;
+      wrap.setAttribute("data-invalid", text ? "true" : "false");
+      var el = wrap.querySelector(".err");
+      if (el) el.textContent = text || "";
+    }
+
+    function show(text){
+      status.textContent = text;
+      status.hidden = false;
+    }
+
+    form.addEventListener("submit", function(ev){
+      ev.preventDefault();
+      /* form.name grąžintų formos atributą, ne lauką — imame per elements */
+      var el = form.elements;
+      if (el["website"].value) return;           /* spam bot užpildė paslėptą lauką */
+
+      var name = el["name"].value.trim();
+      var email = el["email"].value.trim();
+      var place = el["place"].value.trim();
+      var text = el["message"].value.trim();
+      var bad = null;
+
+      setErr("name", name ? "" : (bad = bad || "name", f.errName));
+      setErr("email", /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) ? "" : (bad = bad || "email", f.errEmail));
+      setErr("message", text.length >= 20 ? "" : (bad = bad || "message", f.errMessage));
+      if (bad){
+        var first = form.querySelector('.field[data-invalid="true"] input, .field[data-invalid="true"] textarea');
+        if (first) first.focus();
+        return;
+      }
+
+      var subject = f.subject[purpose];
+      var body = [
+        f.name + ": " + name,
+        f.email + ": " + email,
+        place ? f.place + ": " + place : "",
+        "",
+        text
+      ].filter(Boolean).join("\n");
+
+      if (FORM_ENDPOINT){
+        show(f.sending);
+        fetch(FORM_ENDPOINT, {
+          method:"POST",
+          headers:{"Accept":"application/json","Content-Type":"application/json"},
+          body: JSON.stringify({ purpose:purpose, subject:subject, name:name, email:email, place:place, message:text })
+        }).then(function(r){
+          if (!r.ok) throw new Error("http " + r.status);
+          form.reset();
+          show(f.okPost);
+        }).catch(function(){
+          show(f.failPost);
+        });
+        return;
+      }
+
+      if (CONTACT_EMAIL){
+        window.location.href = "mailto:" + CONTACT_EMAIL +
+          "?subject=" + encodeURIComponent(subject) +
+          "&body=" + encodeURIComponent(body);
+        show(f.okMail);
+        return;
+      }
+
+      show(f.setup);
+    });
   }
 
   function render(lang){
@@ -569,6 +868,9 @@
         '<p>' + esc(d.academy.p) + '</p>' +
       '</div></section>';
 
+    /* VI. enquiry */
+    html += formSection(d);
+
     /* footer */
     html += '<footer>' +
       '<a class="site-link" href="https://www.vonbekker.com" target="_blank" rel="noopener noreferrer">vonbekker.com</a>' +
@@ -577,6 +879,7 @@
 
     document.getElementById("main").innerHTML = html;
     document.documentElement.lang = d.htmlLang;
+    wireForm(d);
 
     var btns = document.querySelectorAll("#langs button");
     for (var i = 0; i < btns.length; i++){
